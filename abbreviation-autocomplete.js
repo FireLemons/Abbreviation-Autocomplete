@@ -1,19 +1,13 @@
 Vue.component('abbreviation-autocomplete', {
-  data: function () {
-    return {
-    }
+  props: {
+    data: Array
   },
   template: `
 <div class="abbreviation-autocomplete">
   <input type="text">
   <ul>
-    <li></li>
+    <li v-for="element in data">{{ element.abbreviation }}</li>
   </ul>
 </div>
 `
-})
-
-const autocomplete = new Vue({
-  el: '#app',
-  data: {}
 })
