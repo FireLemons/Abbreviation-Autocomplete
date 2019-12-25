@@ -9,9 +9,9 @@ Vue.component('abbreviation-autocomplete', {
   },
   computed: {
     searchList: function() {
-      return this.data.filter((elem) => {
+      return this.input.length ? this.data.filter((elem) => {
         return elem.meaning.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
-      })
+      }) : []
     }
   },
   template: `
