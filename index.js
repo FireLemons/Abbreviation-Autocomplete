@@ -3,6 +3,14 @@ const autocomplete = new Vue({
   data: {
     abbreviations: [
       {
+        abbreviation: 'AF',
+        meaning: 'Afghanistan'
+      },
+      {
+        abbreviation: 'AL',
+        meaning: 'Albania'
+      },
+      {
         abbreviation: 'US',
         meaning: 'United States'
       }
