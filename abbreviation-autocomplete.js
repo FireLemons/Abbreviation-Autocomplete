@@ -5,11 +5,12 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   props: {
-    data: Array
+    data: Array,
+    'min-input-length': Number
   },
   computed: {
     searchList: function() {
-      return this.input.length ? this.data.filter((elem) => {
+      return this.input.length >= this.minInputLength ? this.data.filter((elem) => {
         return elem.meaning.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
       }) : []
     }
