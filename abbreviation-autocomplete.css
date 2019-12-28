@@ -1,0 +1,12 @@
+.abbreviation-autocomplete ul {
+  position: absolute
+}
+
+.abbreviation-autocomplete ul, .abbreviation-autocomplete input[type="text"] {
+  width: 100%
+}
+
+.abbreviation-autocomplete ul li {
+  list-style-type: none;
+  text-align: left
+}

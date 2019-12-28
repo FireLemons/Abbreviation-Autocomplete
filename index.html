@@ -3,12 +3,14 @@
   <head>
     <title>Example</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="abbreviation-autocomplete.css">
     <script src="vue.js"></script>
   </head>
   <body>
     <div id="app">
       <h1>Example With Country Codes</h1>
-      <abbreviation-autocomplete :data="abbreviations" :min-input-length="3"></abbreviation-autocomplete>
+      <abbreviation-autocomplete :data="abbreviations" :min-input-length="2"></abbreviation-autocomplete>
+      <h1>Text Under</h1>
     </div>
     <script src="abbreviation-autocomplete.js"></script>
     <script src="index.js"></script>
