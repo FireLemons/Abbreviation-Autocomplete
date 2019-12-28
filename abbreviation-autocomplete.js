@@ -11,7 +11,7 @@ Vue.component('abbreviation-autocomplete', {
   computed: {
     searchList: function() {
       return this.input.length >= this.minInputLength ? this.data.filter((elem) => {
-        return elem.meaning.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
+        return elem.def.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
       }) : []
     }
   },
@@ -19,7 +19,7 @@ Vue.component('abbreviation-autocomplete', {
 <div class="abbreviation-autocomplete">
   <input type="text" v-model="input">
   <ul>
-    <li v-for="element in searchList"><span>{{ element.abbreviation }}</span><span> ({{ element.meaning }})</span></li>
+    <li v-for="element in searchList"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
   </ul>
 </div>
 `,
