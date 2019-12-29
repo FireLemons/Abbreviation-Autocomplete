@@ -1,6 +1,7 @@
 Vue.component('abbreviation-autocomplete', {
   data: function() {
     return {
+      focused: false,
       input: ''
     }
   },
@@ -17,8 +18,8 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" v-model="input">
-  <ul>
+  <input type="text" v-model="input" @focus="focused = true" @blur="focused = false">
+  <ul v-show="focused">
     <li v-for="element in searchList"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
   </ul>
 </div>
