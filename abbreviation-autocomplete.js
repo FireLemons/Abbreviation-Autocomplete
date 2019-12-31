@@ -2,7 +2,8 @@ Vue.component('abbreviation-autocomplete', {
   data: function() {
     return {
       focused: false,
-      input: ''
+      input: '',
+      selected: -1
     }
   },
   props: {
@@ -16,14 +17,35 @@ Vue.component('abbreviation-autocomplete', {
       }) : []
     }
   },
+  watch: {
+    input: function() {
+      this.selected = -1
+    }
+  },
+  methods: {
+    onUnfocus: function(){
+      this.focused = false
+    },
+
+    selectDown: function() {
+      this.selected = (this.selected + 1) % this.searchList.length
+    },
+
+    selectUp: function() {
+      if(this.selected === -1){
+        this.selected = 0
+      }
+
+      let searchLength = this.searchList.length
+      this.selected = (this.selected + searchLength - 1) % searchLength
+    }
+  },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" v-model="input" @focus="focused = true" @blur="focused = false">
+  <input type="text" v-model="input" @focus="focused = true" @blur="onUnfocus" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused">
-    <li v-for="element in searchList"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
+    <li :class="{ selected: index === selected }" v-for="(element, index) in searchList"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
   </ul>
 </div>
-`,
-  mounted: function() {
-  }
+`
 })

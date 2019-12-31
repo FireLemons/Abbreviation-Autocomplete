@@ -2,6 +2,14 @@
   position: relative
 }
 
+.abbreviation-autocomplete input[type="text"], .abbreviation-autocomplete ul {
+  width: 100%
+}
+
+.abbreviation-autocomplete input[type="text"] {
+  box-sizing: border-box;
+}
+
 .abbreviation-autocomplete ul {
   background-color: white;
   border-width: 0 2px 2px 2px;
@@ -12,15 +20,11 @@
   position: absolute;
 }
 
-.abbreviation-autocomplete ul, .abbreviation-autocomplete input[type="text"] {
-  width: 100%
-}
-
-.abbreviation-autocomplete input[type="text"] {
-  box-sizing: border-box;
-}
-
 .abbreviation-autocomplete ul li {
   list-style-type: none;
   text-align: left
+}
+
+.abbreviation-autocomplete ul li.selected {
+  background-color: #e8eaf6t
 }
