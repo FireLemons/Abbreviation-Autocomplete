@@ -1,3 +1,7 @@
+.abbreviation-autocomplete {
+  position: relative
+}
+
 .abbreviation-autocomplete ul {
   background-color: white;
   border-width: 0 2px 2px 2px;
@@ -6,12 +10,14 @@
   margin: 0;
   padding-left: 0;
   position: absolute;
-  width: inherit
+}
+
+.abbreviation-autocomplete ul, .abbreviation-autocomplete input[type="text"] {
+  width: 100%
 }
 
 .abbreviation-autocomplete input[type="text"] {
   box-sizing: border-box;
-  width: 100%
 }
 
 .abbreviation-autocomplete ul li {
