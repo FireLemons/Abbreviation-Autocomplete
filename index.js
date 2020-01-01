@@ -63,7 +63,7 @@ const autocomplete = new Vue({
         a: 'AZ'
       },
       {
-        def: 'Bahamas (the)',
+        def: 'Bahamas',
         a: 'BS'
       },
       {
@@ -103,7 +103,7 @@ const autocomplete = new Vue({
         a: 'BT'
       },
       {
-        def: 'Bolivia (Plurinational State of)',
+        def: 'Bolivia',
         a: 'BO'
       },
       {
@@ -127,7 +127,7 @@ const autocomplete = new Vue({
         a: 'BR'
       },
       {
-        def: 'British Indian Ocean Territory (the)',
+        def: 'British Indian Ocean Territory',
         a: 'IO'
       },
       {
@@ -163,11 +163,11 @@ const autocomplete = new Vue({
         a: 'CA'
       },
       {
-        def: 'Cayman Islands (the)',
+        def: 'Cayman Islands',
         a: 'KY'
       },
       {
-        def: 'Central African Republic (the)',
+        def: 'Central African Republic',
         a: 'CF'
       },
       {
@@ -187,7 +187,7 @@ const autocomplete = new Vue({
         a: 'CX'
       },
       {
-        def: 'Cocos (Keeling) Islands (the)',
+        def: 'Cocos (Keeling) Islands',
         a: 'CC'
       },
       {
@@ -195,19 +195,19 @@ const autocomplete = new Vue({
         a: 'CO'
       },
       {
-        def: 'Comoros (the)',
+        def: 'Comoros',
         a: 'KM'
       },
       {
-        def: 'Congo (the Democratic Republic of the)',
+        def: 'Congo (Democratic Republic of the)',
         a: 'CD'
       },
       {
-        def: 'Congo (the)',
+        def: 'Congo',
         a: 'CG'
       },
       {
-        def: 'Cook Islands (the)',
+        def: 'Cook Islands',
         a: 'CK'
       },
       {
@@ -251,7 +251,7 @@ const autocomplete = new Vue({
         a: 'DM'
       },
       {
-        def: 'Dominican Republic (the)',
+        def: 'Dominican Republic',
         a: 'DO'
       },
       {
@@ -287,11 +287,11 @@ const autocomplete = new Vue({
         a: 'ET'
       },
       {
-        def: 'Falkland Islands (the) [Malvinas]',
+        def: 'Falkland Islands [Malvinas]',
         a: 'FK'
       },
       {
-        def: 'Faroe Islands (the)',
+        def: 'Faroe Islands',
         a: 'FO'
       },
       {
@@ -315,7 +315,7 @@ const autocomplete = new Vue({
         a: 'PF'
       },
       {
-        def: 'French Southern Territories (the)',
+        def: 'French Southern Territories',
         a: 'TF'
       },
       {
@@ -323,7 +323,7 @@ const autocomplete = new Vue({
         a: 'GA'
       },
       {
-        def: 'Gambia (the)',
+        def: 'Gambia',
         a: 'GM'
       },
       {
@@ -391,7 +391,7 @@ const autocomplete = new Vue({
         a: 'HM'
       },
       {
-        def: 'Holy See (the)',
+        def: 'Holy See',
         a: 'VA'
       },
       {
@@ -419,7 +419,7 @@ const autocomplete = new Vue({
         a: 'ID'
       },
       {
-        def: 'Iran (Islamic Republic of)',
+        def: 'Iran',
         a: 'IR'
       },
       {
@@ -471,11 +471,11 @@ const autocomplete = new Vue({
         a: 'KI'
       },
       {
-        def: "Korea (the Democratic People's Republic of)",
+        def: "North Korea",
         a: 'KP'
       },
       {
-        def: 'Korea (the Republic of)',
+        def: 'South Korea',
         a: 'KR'
       },
       {
@@ -487,7 +487,7 @@ const autocomplete = new Vue({
         a: 'KG'
       },
       {
-        def: "Lao People's Democratic Republic (the)",
+        def: "Laos",
         a: 'LA'
       },
       {
@@ -551,7 +551,7 @@ const autocomplete = new Vue({
         a: 'MT'
       },
       {
-        def: 'Marshall Islands (the)',
+        def: 'Marshall Islands',
         a: 'MH'
       },
       {
@@ -579,7 +579,7 @@ const autocomplete = new Vue({
         a: 'FM'
       },
       {
-        def: 'Moldova (the Republic of)',
+        def: 'Moldova',
         a: 'MD'
       },
       {
@@ -623,7 +623,7 @@ const autocomplete = new Vue({
         a: 'NP'
       },
       {
-        def: 'Netherlands (the)',
+        def: 'Netherlands',
         a: 'NL'
       },
       {
@@ -639,7 +639,7 @@ const autocomplete = new Vue({
         a: 'NI'
       },
       {
-        def: 'Niger (the)',
+        def: 'Niger',
         a: 'NE'
       },
       {
@@ -659,7 +659,7 @@ const autocomplete = new Vue({
         a: 'MK'
       },
       {
-        def: 'Northern Mariana Islands (the)',
+        def: 'Northern Mariana Islands',
         a: 'MP'
       },
       {
@@ -699,7 +699,7 @@ const autocomplete = new Vue({
         a: 'PE'
       },
       {
-        def: 'Philippines (the)',
+        def: 'Philippines',
         a: 'PH'
       },
       {
@@ -727,7 +727,7 @@ const autocomplete = new Vue({
         a: 'RO'
       },
       {
-        def: 'Russian Federation (the)',
+        def: 'Russian Federation',
         a: 'RU'
       },
       {
@@ -843,7 +843,7 @@ const autocomplete = new Vue({
         a: 'LK'
       },
       {
-        def: 'Sudan (the)',
+        def: 'Sudan',
         a: 'SD'
       },
       {
@@ -863,7 +863,7 @@ const autocomplete = new Vue({
         a: 'CH'
       },
       {
-        def: 'Syrian Arab Republic (the)',
+        def: 'Syrian Arab Republic',
         a: 'SY'
       },
       {
@@ -915,7 +915,7 @@ const autocomplete = new Vue({
         a: 'TM'
       },
       {
-        def: 'Turks and Caicos Islands (the)',
+        def: 'Turks and Caicos Islands',
         a: 'TC'
       },
       {
@@ -931,19 +931,19 @@ const autocomplete = new Vue({
         a: 'UA'
       },
       {
-        def: 'United Arab Emirates (the)',
+        def: 'United Arab Emirates',
         a: 'AE'
       },
       {
-        def: 'United Kingdom of Great Britain and Northern Ireland (the)',
+        def: 'United Kingdom',
         a: 'GB'
       },
       {
-        def: 'United States Minor Outlying Islands (the)',
+        def: 'United States Minor Outlying Islands',
         a: 'UM'
       },
       {
-        def: 'United States of America (the)',
+        def: 'United States of America',
         a: 'US'
       },
       {
@@ -959,7 +959,7 @@ const autocomplete = new Vue({
         a: 'VU'
       },
       {
-        def: 'Venezuela (Bolivarian Republic of)',
+        def: 'Venezuela',
         a: 'VE'
       },
       {
@@ -979,7 +979,7 @@ const autocomplete = new Vue({
         a: 'WF'
       },
       {
-        def: 'Western Sahara*',
+        def: 'Western Sahara',
         a: 'EH'
       },
       {
@@ -995,7 +995,7 @@ const autocomplete = new Vue({
         a: 'ZW'
       },
       {
-        def: 'Åland Islands',
+        def: 'Aland Islands',
         a: 'AX'
       }
     ]
