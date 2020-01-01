@@ -471,7 +471,7 @@ const autocomplete = new Vue({
         a: 'KI'
       },
       {
-        def: "North Korea",
+        def: 'North Korea',
         a: 'KP'
       },
       {
@@ -487,7 +487,7 @@ const autocomplete = new Vue({
         a: 'KG'
       },
       {
-        def: "Laos",
+        def: 'Laos',
         a: 'LA'
       },
       {

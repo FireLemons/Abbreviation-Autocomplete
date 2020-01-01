@@ -1,5 +1,5 @@
 Vue.component('abbreviation-autocomplete', {
-  data: function() {
+  data: function () {
     return {
       focused: false,
       input: '',
@@ -12,14 +12,14 @@ Vue.component('abbreviation-autocomplete', {
     'min-input-length': Number
   },
   computed: {
-    searchList: function() {
+    searchList: function () {
       return this.input.length >= this.minInputLength ? this.data.filter((elem) => {
         return elem.def.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
       }) : []
     }
   },
   watch: {
-    input: function() {
+    input: function () {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
@@ -29,32 +29,32 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   methods: {
-    onUnfocus: function(){
+    onUnfocus: function () {
       this.focused = false
     },
 
-    select: function() {
-      if(this.selected !== -1) {
+    select: function () {
+      if (this.selected !== -1) {
         this.focused = false
         this.input = this.searchList[this.selected].a
         this.recentlySelected = true
       }
     },
 
-    selectDown: function() {
+    selectDown: function () {
       this.selected = (this.selected + 1) % this.searchList.length
     },
 
-    selectUp: function() {
-      if(this.selected === -1){
+    selectUp: function () {
+      if (this.selected === -1) {
         this.selected = 0
       }
 
-      let searchLength = this.searchList.length
+      const searchLength = this.searchList.length
       this.selected = (this.selected + searchLength - 1) % searchLength
     },
 
-    setSelected(index){
+    setSelected (index) {
       this.selected = index
     }
   },
