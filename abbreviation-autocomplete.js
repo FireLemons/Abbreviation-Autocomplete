@@ -13,9 +13,13 @@ Vue.component('abbreviation-autocomplete', {
   },
   computed: {
     searchList: function () {
-      return this.input.length >= this.minInputLength ? this.data.filter((elem) => {
-        return elem.def.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
-      }) : []
+      if(this.input.length >= this.minInputLength) {
+        return this.data.filter((elem) => {
+          return elem.def.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
+        })
+      } else {
+        return []
+      }
     }
   },
   watch: {
@@ -65,5 +69,8 @@ Vue.component('abbreviation-autocomplete', {
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
   </ul>
 </div>
-`
+`,
+  created: function(){
+    this.data.sort((e1, e2) => e1.def.toLowerCase().localeCompare(e2.def.toLowerCase()))
+  }
 })
