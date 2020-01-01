@@ -3,6 +3,7 @@ Vue.component('abbreviation-autocomplete', {
     return {
       focused: false,
       input: '',
+      recentlySelected: false,
       selected: -1
     }
   },
@@ -19,7 +20,12 @@ Vue.component('abbreviation-autocomplete', {
   },
   watch: {
     input: function() {
-      this.selected = -1
+      if (this.recentlySelected) {
+        this.recentlySelected = false
+      } else {
+        this.focused = true
+        this.selected = -1
+      }
     }
   },
   methods: {
@@ -28,10 +34,10 @@ Vue.component('abbreviation-autocomplete', {
     },
 
     select: function() {
-      console.log(this.selected)
       if(this.selected !== -1) {
-        this.input = this.searchList[this.selected].a
         this.focused = false
+        this.input = this.searchList[this.selected].a
+        this.recentlySelected = true
       }
     },
 
