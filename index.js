@@ -223,7 +223,7 @@ const autocomplete = new Vue({
         a: 'CU'
       },
       {
-        def: 'Curaçao',
+        def: 'Curacao',
         a: 'CW'
       },
       {
@@ -235,7 +235,7 @@ const autocomplete = new Vue({
         a: 'CZ'
       },
       {
-        def: "Côte d'Ivoire",
+        def: "Cote d'Ivoire",
         a: 'CI'
       },
       {
