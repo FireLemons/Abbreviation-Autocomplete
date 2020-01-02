@@ -1,3 +1,21 @@
+//Inserts an element into a sorted array
+//  @param {array} arr The sorted array 
+//  @param {function} compare(a, b)
+//    @param  {object} a The first element to be compared
+//    @param  {object} b The second element to be compared
+//    @return {number} A negative number if "b" comes before "a", 0 if "a" is equal to "b", a positive number if "a" comes before "b"
+//  @param {object} elem The element to be inserted into "arr"
+//  @throws {TypeError} for incorrect parameter types
+function insert(arr, compare, elem){
+  if(!(arr instanceof Array)){
+    throw new TypeError('1st param "arr" must be an array')
+  }
+
+  if(!(compare instanceof Function)){
+    throw new TypeError('2nd param "compare" must be a function')
+  }
+}
+
 Vue.component('abbreviation-autocomplete', {
   data: function () {
     return {
@@ -9,14 +27,29 @@ Vue.component('abbreviation-autocomplete', {
   },
   props: {
     data: Array,
-    'min-input-length': Number
+    'limit': {
+      default: Infinity,
+      type: Number
+    },
+    'min-input-length': {
+      default: 1,
+      type: Number
+    }
   },
   computed: {
     searchList: function () {
       if(this.input.length >= this.minInputLength) {
-        return this.data.filter((elem) => {
-          return elem.def.toLowerCase().indexOf(this.input.toLowerCase()) !== -1
+        let relatedResults = []
+
+        this.data.forEach((elem) => {
+          let index = elem.def.indexOf(this.input)
+
+          if(index >= 0){
+            
+          }
         })
+
+        return relatedResults
       } else {
         return []
       }
@@ -72,5 +105,5 @@ Vue.component('abbreviation-autocomplete', {
 `,
   created: function(){
     this.data.sort((e1, e2) => e1.def.toLowerCase().localeCompare(e2.def.toLowerCase()))
-  }
+  },
 })
