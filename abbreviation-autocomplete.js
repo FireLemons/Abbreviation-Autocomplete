@@ -1,18 +1,67 @@
-//Inserts an element into a sorted array
-//  @param {array} arr The sorted array 
+// Inserts an element into a sorted array containing a limited range of integers
+//  @param {array} arrReduced The array represented in the form:
+//    [e1: [a1, b1], e2: [a2, b2]]
+//    where
+//      eX is an element of the array
+//      aX is the first index that contains eX in the array
+//      bX is the last index that contains eX in the array
+//  @param {integer} elem The integer to be inserted into "arrReduced"
+function countingSortArray (arrReduced, elem) {
+  for (let i = elem + 1; i < arrReduced.length; i++) {
+    const range = arrReduced[i]
+
+    if (range) {
+      range[0]++
+      range[1]++
+    }
+  }
+
+  const elemRange = arrReduced[elem]
+
+  if (elemRange) {
+    elemRange[1]++
+  } else {
+    for (let i = elem - 1; i >= 0; i--) {
+      const range = arrReduced[i]
+
+      if (range) {
+        const afterLastPosition = range[1] + 1
+        arrReduced[elem] = [afterLastPosition, afterLastPosition]
+        return
+      }
+    }
+
+    arrReduced[elem] = [0, 0]
+  }
+}
+
+// Inserts an element into a sorted array
+//  @param {array} arr The sorted array
 //  @param {function} compare(a, b)
 //    @param  {object} a The first element to be compared
 //    @param  {object} b The second element to be compared
 //    @return {number} A negative number if "b" comes before "a", 0 if "a" is equal to "b", a positive number if "a" comes before "b"
 //  @param {object} elem The element to be inserted into "arr"
 //  @throws {TypeError} for incorrect parameter types
-function insert(arr, compare, elem){
-  if(!(arr instanceof Array)){
+function insert (arr, compare, elem) {
+  if (!(arr instanceof Array)) {
     throw new TypeError('1st param "arr" must be an array')
   }
 
-  if(!(compare instanceof Function)){
+  if (!(compare instanceof Function)) {
     throw new TypeError('2nd param "compare" must be a function')
+  }
+
+  if (!arr.length) {
+    arr.push(elem)
+  } else {
+    const lowerIndex = 0
+    const middleIndex = Math.floor(arr.length / 2)
+    const upperIndex = arr.length
+
+    while (lowerIndex < upperIndex) {
+
+    }
   }
 }
 
@@ -27,7 +76,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   props: {
     data: Array,
-    'limit': {
+    limit: {
       default: Infinity,
       type: Number
     },
@@ -38,14 +87,14 @@ Vue.component('abbreviation-autocomplete', {
   },
   computed: {
     searchList: function () {
-      if(this.input.length >= this.minInputLength) {
-        let relatedResults = []
+      if (this.input.length >= this.minInputLength) {
+        const relatedResults = []
 
         this.data.forEach((elem) => {
-          let index = elem.def.indexOf(this.input)
+          const index = elem.def.indexOf(this.input)
 
-          if(index >= 0){
-            
+          if (index >= 0) {
+
           }
         })
 
@@ -103,7 +152,7 @@ Vue.component('abbreviation-autocomplete', {
   </ul>
 </div>
 `,
-  created: function(){
+  created: function () {
     this.data.sort((e1, e2) => e1.def.toLowerCase().localeCompare(e2.def.toLowerCase()))
-  },
+  }
 })
