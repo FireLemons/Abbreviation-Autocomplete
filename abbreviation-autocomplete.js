@@ -6,7 +6,13 @@
 //      aX is the first index that contains eX in the array
 //      bX is the last index that contains eX in the array
 //  @param {integer} elem The integer to be inserted into "arrReduced"
+//  @throws {TypeError} for incorrect parameter types
 function countingSortArray (arrReduced, elem) {
+  if (!(arrReduced instanceof Array)) {
+    throw new TypeError('1st param "arrReduced" must be an array')
+  }
+
+  // Increase indicies for elements greater than elem
   for (let i = elem + 1; i < arrReduced.length; i++) {
     const range = arrReduced[i]
 
@@ -18,9 +24,9 @@ function countingSortArray (arrReduced, elem) {
 
   const elemRange = arrReduced[elem]
 
-  if (elemRange) {
+  if (elemRange) {// Increase elem's ending index
     elemRange[1]++
-  } else {
+  } else {// Create elem's indicies because it's not in arrReduced yet
     for (let i = elem - 1; i >= 0; i--) {
       const range = arrReduced[i]
 
@@ -55,12 +61,12 @@ function insert (arr, compare, elem) {
   if (!arr.length) {
     arr.push(elem)
   } else {
-    const lowerIndex = 0
-    const middleIndex = Math.floor(arr.length / 2)
-    const upperIndex = arr.length
+    let lowerIndex = 0
+    let middleIndex = Math.floor(arr.length / 2)
+    let upperIndex = arr.length
 
     while (lowerIndex < upperIndex) {
-
+      
     }
   }
 }
