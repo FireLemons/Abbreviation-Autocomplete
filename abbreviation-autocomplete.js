@@ -41,29 +41,43 @@ function countingSortArray (arrReduced, elem) {
   }
 }
 
-// Inserts an element into a sorted array
+// Inserts an element into an array sorted into categories that are also sorted
 //  @param {array} arr The sorted array
-//  @param {function} compare(a, b)
+//  @param {array} range The range of indicies of the category elem is first sorted into
+//    range is in the form [a, b]
+//    where
+//      a is the first index of an element of the category elem belongs to
+//      b is the last index of an element of the category elem belongs to including elem
+//  @param {function} compare(a, b) The comparison to determine the sorted order within each category
 //    @param  {object} a The first element to be compared
 //    @param  {object} b The second element to be compared
 //    @return {number} A negative number if "b" comes before "a", 0 if "a" is equal to "b", a positive number if "a" comes before "b"
 //  @param {object} elem The element to be inserted into "arr"
 //  @throws {TypeError} for incorrect parameter types
-function insert (arr, compare, elem) {
+//  @throws {ReferenceError} for incorrect parameter formats
+function insert (arr, range, compare, elem) {
   if (!(arr instanceof Array)) {
     throw new TypeError('1st param "arr" must be an array')
   }
 
+  if (!(range instanceof Array)) {
+    throw new TypeError('2nd param "range" must be an array')
+  } else if(range.length < 2){
+    throw new ReferenceError('2nd param "range" must have at least 2 elements')
+  } else if(range[0] !== Math.floor(range[0]) || range[1] !== Math.floor(range[1])){
+    throw new ReferenceError('2nd param "range" must have starting and ending indicies of a category "elem" belongs to')
+  }
+
   if (!(compare instanceof Function)) {
-    throw new TypeError('2nd param "compare" must be a function')
+    throw new TypeError('3rd param "compare" must be a function')
   }
 
   if (!arr.length) {
     arr.push(elem)
   } else {
-    let lowerIndex = 0
-    let middleIndex = Math.floor(arr.length / 2)
-    let upperIndex = arr.length
+    let lowerIndex = range[0]
+    let upperIndex = range[1]
+    let middleIndex = (upperIndex + lowerIndex) / 2
 
     while (lowerIndex < upperIndex) {
       
