@@ -24,9 +24,9 @@ function countingSortArray (arrReduced, elem) {
 
   const elemRange = arrReduced[elem]
 
-  if (elemRange) {// Increase elem's ending index
+  if (elemRange) { // Increase elem's ending index
     elemRange[1]++
-  } else {// Create elem's indicies because it's not in arrReduced yet
+  } else { // Create elem's indicies because it's not in arrReduced yet
     for (let i = elem - 1; i >= 0; i--) {
       const range = arrReduced[i]
 
@@ -62,9 +62,9 @@ function insert (arr, range, compare, elem) {
 
   if (!(range instanceof Array)) {
     throw new TypeError('2nd param "range" must be an array')
-  } else if(range.length < 2){
+  } else if (range.length < 2) {
     throw new ReferenceError('2nd param "range" must have at least 2 elements')
-  } else if(range[0] !== Math.floor(range[0]) || range[1] !== Math.floor(range[1])){
+  } else if (range[0] !== Math.floor(range[0]) || range[1] !== Math.floor(range[1])) {
     throw new ReferenceError('2nd param "range" must have starting and ending indicies of a category "elem" belongs to')
   }
 
@@ -77,10 +77,31 @@ function insert (arr, range, compare, elem) {
   } else {
     let lowerIndex = range[0]
     let upperIndex = range[1]
-    let middleIndex = (upperIndex + lowerIndex) / 2
+    let middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
+    let limit = 20
 
-    while (lowerIndex < upperIndex) {
-      
+    while (lowerIndex < upperIndex && limit > 0) {
+      switch (arr[middleIndex].localeCompare(elem)) {
+        case 1: // elem comes before middle
+          upperIndex = middleIndex - 1
+          break
+        case 0: // obvious
+          arr.splice(middleIndex, 0, elem)
+
+          return
+        case -1: // elem comes after middle
+          lowerIndex = middleIndex + 1
+          break
+      }
+
+      middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
+      limit--
+    }
+
+    if (arr[middleIndex].localeCompare(elem) > 0) {
+      arr.splice(middleIndex, 0, elem)
+    } else {
+      arr.splice(middleIndex + 1, 0, elem)
     }
   }
 }
