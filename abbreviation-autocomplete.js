@@ -7,7 +7,7 @@
 //      bX is the last index that contains eX in the array
 //  @param {integer} elem The integer to be inserted into "arrReduced"
 //  @throws {TypeError} for incorrect parameter types
-function countingSortArray (arrReduced, elem) {
+function countingSort (arrReduced, elem) {
   if (!(arrReduced instanceof Array)) {
     throw new TypeError('1st param "arrReduced" must be an array')
   }
@@ -72,16 +72,15 @@ function insert (arr, range, compare, elem) {
     throw new TypeError('3rd param "compare" must be a function')
   }
 
-  if (!arr.length) {
-    arr.push(elem)
+  if(range[0] === range[1]) {
+    arr.splice(range[0], 0, elem)
   } else {
     let lowerIndex = range[0]
-    let upperIndex = range[1]
+    let upperIndex = range[1] - 1
     let middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
-    let limit = 20
 
-    while (lowerIndex < upperIndex && limit > 0) {
-      switch (arr[middleIndex].localeCompare(elem)) {
+    while (lowerIndex < upperIndex) {
+      switch (compare(arr[middleIndex], elem)) {
         case 1: // elem comes before middle
           upperIndex = middleIndex - 1
           break
@@ -95,10 +94,9 @@ function insert (arr, range, compare, elem) {
       }
 
       middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
-      limit--
     }
 
-    if (arr[middleIndex].localeCompare(elem) > 0) {
+    if (compare(arr[middleIndex], elem) > 0) {
       arr.splice(middleIndex, 0, elem)
     } else {
       arr.splice(middleIndex + 1, 0, elem)
@@ -129,13 +127,16 @@ Vue.component('abbreviation-autocomplete', {
   computed: {
     searchList: function () {
       if (this.input.length >= this.minInputLength) {
+        const countingSortData = []
         const relatedResults = []
 
         this.data.forEach((elem) => {
-          const index = elem.def.indexOf(this.input)
+          const index = elem.def.toLowerCase().indexOf(this.input.toLowerCase())
 
+          // if user input is a substring of this definition
           if (index >= 0) {
-
+            countingSort(countingSortData, index)
+            insert(relatedResults, countingSortData[index], (a, b) => a.def.localeCompare(b.def), elem)
           }
         })
 
