@@ -137,6 +137,7 @@ Vue.component('abbreviation-autocomplete', {
           if (index >= 0) {
             countingSort(countingSortData, index)
             insert(relatedResults, countingSortData[index], (a, b) => a.def.localeCompare(b.def), elem)
+            elem.substrIndex = index
           }
         })
 
@@ -190,7 +191,10 @@ Vue.component('abbreviation-autocomplete', {
 <div class="abbreviation-autocomplete">
   <input type="text" v-model="input" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
-    <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)"><span>{{ element.a }}</span><span> ({{ element.def }})</span></li>
+    <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
+      <span>{{ element.a }}</span>
+      <span> ({{ element.def.substr(0, element.substrIndex) }}</span><span class="highlight">{{ input }}</span><span>{{ element.def.substr(element.substrIndex + input.length) }})</span>
+    </li>
   </ul>
 </div>
 `,

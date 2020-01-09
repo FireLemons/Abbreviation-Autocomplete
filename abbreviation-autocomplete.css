@@ -29,3 +29,7 @@
 .abbreviation-autocomplete ul li.selected {
   background-color: #e8eaf6
 }
+
+.abbreviation-autocomplete ul li span.highlight {
+  color: #1e88e5
+}
