@@ -140,7 +140,7 @@ Vue.component('abbreviation-autocomplete', {
           }
         })
 
-        return relatedResults
+        return relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
       } else {
         return []
       }
