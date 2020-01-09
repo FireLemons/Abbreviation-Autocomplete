@@ -197,8 +197,5 @@ Vue.component('abbreviation-autocomplete', {
     </li>
   </ul>
 </div>
-`,
-  created: function () {
-    this.data.sort((e1, e2) => e1.def.toLowerCase().localeCompare(e2.def.toLowerCase()))
-  }
+`
 })
