@@ -72,7 +72,7 @@ function insert (arr, range, compare, elem) {
     throw new TypeError('3rd param "compare" must be a function')
   }
 
-  if(range[0] === range[1]) {
+  if (range[0] === range[1]) {
     arr.splice(range[0], 0, elem)
   } else {
     let lowerIndex = range[0]
