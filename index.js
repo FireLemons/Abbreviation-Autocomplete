@@ -3,1000 +3,1000 @@ const autocomplete = new Vue({
   data: {
     abbreviations: [
       {
-        def: 'Afghanistan',
-        a: 'AF'
+        a: 'AF',
+        d: 'Afghanistan'
       },
       {
-        def: 'Albania',
-        a: 'AL'
+        a: 'AL',
+        d: 'Albania'
       },
       {
-        def: 'Algeria',
-        a: 'DZ'
+        a: 'DZ',
+        d: 'Algeria'
       },
       {
-        def: 'American Samoa',
-        a: 'AS'
+        a: 'AS',
+        d: 'American Samoa'
       },
       {
-        def: 'Andorra',
-        a: 'AD'
+        a: 'AD',
+        d: 'Andorra'
       },
       {
-        def: 'Angola',
-        a: 'AO'
+        a: 'AO',
+        d: 'Angola'
       },
       {
-        def: 'Anguilla',
-        a: 'AI'
+        a: 'AI',
+        d: 'Anguilla'
       },
       {
-        def: 'Antarctica',
-        a: 'AQ'
+        a: 'AQ',
+        d: 'Antarctica'
       },
       {
-        def: 'Antigua and Barbuda',
-        a: 'AG'
+        a: 'AG',
+        d: 'Antigua and Barbuda'
       },
       {
-        def: 'Argentina',
-        a: 'AR'
+        a: 'AR',
+        d: 'Argentina'
       },
       {
-        def: 'Armenia',
-        a: 'AM'
+        a: 'AM',
+        d: 'Armenia'
       },
       {
-        def: 'Aruba',
-        a: 'AW'
+        a: 'AW',
+        d: 'Aruba'
       },
       {
-        def: 'Australia',
-        a: 'AU'
+        a: 'AU',
+        d: 'Australia'
       },
       {
-        def: 'Austria',
-        a: 'AT'
+        a: 'AT',
+        d: 'Austria'
       },
       {
-        def: 'Azerbaijan',
-        a: 'AZ'
+        a: 'AZ',
+        d: 'Azerbaijan'
       },
       {
-        def: 'Bahamas',
-        a: 'BS'
+        a: 'BS',
+        d: 'Bahamas'
       },
       {
-        def: 'Bahrain',
-        a: 'BH'
+        a: 'BH',
+        d: 'Bahrain'
       },
       {
-        def: 'Bangladesh',
-        a: 'BD'
+        a: 'BD',
+        d: 'Bangladesh'
       },
       {
-        def: 'Barbados',
-        a: 'BB'
+        a: 'BB',
+        d: 'Barbados'
       },
       {
-        def: 'Belarus',
-        a: 'BY'
+        a: 'BY',
+        d: 'Belarus'
       },
       {
-        def: 'Belgium',
-        a: 'BE'
+        a: 'BE',
+        d: 'Belgium'
       },
       {
-        def: 'Belize',
-        a: 'BZ'
+        a: 'BZ',
+        d: 'Belize'
       },
       {
-        def: 'Benin',
-        a: 'BJ'
+        a: 'BJ',
+        d: 'Benin'
       },
       {
-        def: 'Bermuda',
-        a: 'BM'
+        a: 'BM',
+        d: 'Bermuda'
       },
       {
-        def: 'Bhutan',
-        a: 'BT'
+        a: 'BT',
+        d: 'Bhutan'
       },
       {
-        def: 'Bolivia',
-        a: 'BO'
+        a: 'BO',
+        d: 'Bolivia'
       },
       {
-        def: 'Bonaire, Sint Eustatius and Saba',
-        a: 'BQ'
+        a: 'BQ',
+        d: 'Bonaire, Sint Eustatius and Saba'
       },
       {
-        def: 'Bosnia and Herzegovina',
-        a: 'BA'
+        a: 'BA',
+        d: 'Bosnia and Herzegovina'
       },
       {
-        def: 'Botswana',
-        a: 'BW'
+        a: 'BW',
+        d: 'Botswana'
       },
       {
-        def: 'Bouvet Island',
-        a: 'BV'
+        a: 'BV',
+        d: 'Bouvet Island'
       },
       {
-        def: 'Brazil',
-        a: 'BR'
+        a: 'BR',
+        d: 'Brazil'
       },
       {
-        def: 'British Indian Ocean Territory',
-        a: 'IO'
+        a: 'IO',
+        d: 'British Indian Ocean Territory'
       },
       {
-        def: 'Brunei Darussalam',
-        a: 'BN'
+        a: 'BN',
+        d: 'Brunei Darussalam'
       },
       {
-        def: 'Bulgaria',
-        a: 'BG'
+        a: 'BG',
+        d: 'Bulgaria'
       },
       {
-        def: 'Burkina Faso',
-        a: 'BF'
+        a: 'BF',
+        d: 'Burkina Faso'
       },
       {
-        def: 'Burundi',
-        a: 'BI'
+        a: 'BI',
+        d: 'Burundi'
       },
       {
-        def: 'Cabo Verde',
-        a: 'CV'
+        a: 'CV',
+        d: 'Cabo Verde'
       },
       {
-        def: 'Cambodia',
-        a: 'KH'
+        a: 'KH',
+        d: 'Cambodia'
       },
       {
-        def: 'Cameroon',
-        a: 'CM'
+        a: 'CM',
+        d: 'Cameroon'
       },
       {
-        def: 'Canada',
-        a: 'CA'
+        a: 'CA',
+        d: 'Canada'
       },
       {
-        def: 'Cayman Islands',
-        a: 'KY'
+        a: 'KY',
+        d: 'Cayman Islands'
       },
       {
-        def: 'Central African Republic',
-        a: 'CF'
+        a: 'CF',
+        d: 'Central African Republic'
       },
       {
-        def: 'Chad',
-        a: 'TD'
+        a: 'TD',
+        d: 'Chad'
       },
       {
-        def: 'Chile',
-        a: 'CL'
+        a: 'CL',
+        d: 'Chile'
       },
       {
-        def: 'China',
-        a: 'CN'
+        a: 'CN',
+        d: 'China'
       },
       {
-        def: 'Christmas Island',
-        a: 'CX'
+        a: 'CX',
+        d: 'Christmas Island'
       },
       {
-        def: 'Cocos (Keeling) Islands',
-        a: 'CC'
+        a: 'CC',
+        d: 'Cocos (Keeling) Islands'
       },
       {
-        def: 'Colombia',
-        a: 'CO'
+        a: 'CO',
+        d: 'Colombia'
       },
       {
-        def: 'Comoros',
-        a: 'KM'
+        a: 'KM',
+        d: 'Comoros'
       },
       {
-        def: 'Congo (Democratic Republic of the)',
-        a: 'CD'
+        a: 'CD',
+        d: 'Congo (Democratic Republic of the)'
       },
       {
-        def: 'Congo',
-        a: 'CG'
+        a: 'CG',
+        d: 'Congo'
       },
       {
-        def: 'Cook Islands',
-        a: 'CK'
+        a: 'CK',
+        d: 'Cook Islands'
       },
       {
-        def: 'Costa Rica',
-        a: 'CR'
+        a: 'CR',
+        d: 'Costa Rica'
       },
       {
-        def: 'Croatia',
-        a: 'HR'
+        a: 'HR',
+        d: 'Croatia'
       },
       {
-        def: 'Cuba',
-        a: 'CU'
+        a: 'CU',
+        d: 'Cuba'
       },
       {
-        def: 'Curacao',
-        a: 'CW'
+        a: 'CW',
+        d: 'Curacao'
       },
       {
-        def: 'Cyprus',
-        a: 'CY'
+        a: 'CY',
+        d: 'Cyprus'
       },
       {
-        def: 'Czechia',
-        a: 'CZ'
+        a: 'CZ',
+        d: 'Czechia'
       },
       {
-        def: "Cote d'Ivoire",
-        a: 'CI'
+        a: 'CI',
+        d: "Cote d'Ivoire"
       },
       {
-        def: 'Denmark',
-        a: 'DK'
+        a: 'DK',
+        d: 'Denmark'
       },
       {
-        def: 'Djibouti',
-        a: 'DJ'
+        a: 'DJ',
+        d: 'Djibouti'
       },
       {
-        def: 'Dominica',
-        a: 'DM'
+        a: 'DM',
+        d: 'Dominica'
       },
       {
-        def: 'Dominican Republic',
-        a: 'DO'
+        a: 'DO',
+        d: 'Dominican Republic'
       },
       {
-        def: 'Ecuador',
-        a: 'EC'
+        a: 'EC',
+        d: 'Ecuador'
       },
       {
-        def: 'Egypt',
-        a: 'EG'
+        a: 'EG',
+        d: 'Egypt'
       },
       {
-        def: 'El Salvador',
-        a: 'SV'
+        a: 'SV',
+        d: 'El Salvador'
       },
       {
-        def: 'Equatorial Guinea',
-        a: 'GQ'
+        a: 'GQ',
+        d: 'Equatorial Guinea'
       },
       {
-        def: 'Eritrea',
-        a: 'ER'
+        a: 'ER',
+        d: 'Eritrea'
       },
       {
-        def: 'Estonia',
-        a: 'EE'
+        a: 'EE',
+        d: 'Estonia'
       },
       {
-        def: 'Eswatini',
-        a: 'SZ'
+        a: 'SZ',
+        d: 'Eswatini'
       },
       {
-        def: 'Ethiopia',
-        a: 'ET'
+        a: 'ET',
+        d: 'Ethiopia'
       },
       {
-        def: 'Falkland Islands [Malvinas]',
-        a: 'FK'
+        a: 'FK',
+        d: 'Falkland Islands [Malvinas]'
       },
       {
-        def: 'Faroe Islands',
-        a: 'FO'
+        a: 'FO',
+        d: 'Faroe Islands'
       },
       {
-        def: 'Fiji',
-        a: 'FJ'
+        a: 'FJ',
+        d: 'Fiji'
       },
       {
-        def: 'Finland',
-        a: 'FI'
+        a: 'FI',
+        d: 'Finland'
       },
       {
-        def: 'France',
-        a: 'FR'
+        a: 'FR',
+        d: 'France'
       },
       {
-        def: 'French Guiana',
-        a: 'GF'
+        a: 'GF',
+        d: 'French Guiana'
       },
       {
-        def: 'French Polynesia',
-        a: 'PF'
+        a: 'PF',
+        d: 'French Polynesia'
       },
       {
-        def: 'French Southern Territories',
-        a: 'TF'
+        a: 'TF',
+        d: 'French Southern Territories'
       },
       {
-        def: 'Gabon',
-        a: 'GA'
+        a: 'GA',
+        d: 'Gabon'
       },
       {
-        def: 'Gambia',
-        a: 'GM'
+        a: 'GM',
+        d: 'Gambia'
       },
       {
-        def: 'Georgia',
-        a: 'GE'
+        a: 'GE',
+        d: 'Georgia'
       },
       {
-        def: 'Germany',
-        a: 'DE'
+        a: 'DE',
+        d: 'Germany'
       },
       {
-        def: 'Ghana',
-        a: 'GH'
+        a: 'GH',
+        d: 'Ghana'
       },
       {
-        def: 'Gibraltar',
-        a: 'GI'
+        a: 'GI',
+        d: 'Gibraltar'
       },
       {
-        def: 'Greece',
-        a: 'GR'
+        a: 'GR',
+        d: 'Greece'
       },
       {
-        def: 'Greenland',
-        a: 'GL'
+        a: 'GL',
+        d: 'Greenland'
       },
       {
-        def: 'Grenada',
-        a: 'GD'
+        a: 'GD',
+        d: 'Grenada'
       },
       {
-        def: 'Guadeloupe',
-        a: 'GP'
+        a: 'GP',
+        d: 'Guadeloupe'
       },
       {
-        def: 'Guam',
-        a: 'GU'
+        a: 'GU',
+        d: 'Guam'
       },
       {
-        def: 'Guatemala',
-        a: 'GT'
+        a: 'GT',
+        d: 'Guatemala'
       },
       {
-        def: 'Guernsey',
-        a: 'GG'
+        a: 'GG',
+        d: 'Guernsey'
       },
       {
-        def: 'Guinea',
-        a: 'GN'
+        a: 'GN',
+        d: 'Guinea'
       },
       {
-        def: 'Guinea-Bissau',
-        a: 'GW'
+        a: 'GW',
+        d: 'Guinea-Bissau'
       },
       {
-        def: 'Guyana',
-        a: 'GY'
+        a: 'GY',
+        d: 'Guyana'
       },
       {
-        def: 'Haiti',
-        a: 'HT'
+        a: 'HT',
+        d: 'Haiti'
       },
       {
-        def: 'Heard Island and McDonald Islands',
-        a: 'HM'
+        a: 'HM',
+        d: 'Heard Island and McDonald Islands'
       },
       {
-        def: 'Holy See',
-        a: 'VA'
+        a: 'VA',
+        d: 'Holy See'
       },
       {
-        def: 'Honduras',
-        a: 'HN'
+        a: 'HN',
+        d: 'Honduras'
       },
       {
-        def: 'Hong Kong',
-        a: 'HK'
+        a: 'HK',
+        d: 'Hong Kong'
       },
       {
-        def: 'Hungary',
-        a: 'HU'
+        a: 'HU',
+        d: 'Hungary'
       },
       {
-        def: 'Iceland',
-        a: 'IS'
+        a: 'IS',
+        d: 'Iceland'
       },
       {
-        def: 'India',
-        a: 'IN'
+        a: 'IN',
+        d: 'India'
       },
       {
-        def: 'Indonesia',
-        a: 'ID'
+        a: 'ID',
+        d: 'Indonesia'
       },
       {
-        def: 'Iran',
-        a: 'IR'
+        a: 'IR',
+        d: 'Iran'
       },
       {
-        def: 'Iraq',
-        a: 'IQ'
+        a: 'IQ',
+        d: 'Iraq'
       },
       {
-        def: 'Ireland',
-        a: 'IE'
+        a: 'IE',
+        d: 'Ireland'
       },
       {
-        def: 'Isle of Man',
-        a: 'IM'
+        a: 'IM',
+        d: 'Isle of Man'
       },
       {
-        def: 'Israel',
-        a: 'IL'
+        a: 'IL',
+        d: 'Israel'
       },
       {
-        def: 'Italy',
-        a: 'IT'
+        a: 'IT',
+        d: 'Italy'
       },
       {
-        def: 'Jamaica',
-        a: 'JM'
+        a: 'JM',
+        d: 'Jamaica'
       },
       {
-        def: 'Japan',
-        a: 'JP'
+        a: 'JP',
+        d: 'Japan'
       },
       {
-        def: 'Jersey',
-        a: 'JE'
+        a: 'JE',
+        d: 'Jersey'
       },
       {
-        def: 'Jordan',
-        a: 'JO'
+        a: 'JO',
+        d: 'Jordan'
       },
       {
-        def: 'Kazakhstan',
-        a: 'KZ'
+        a: 'KZ',
+        d: 'Kazakhstan'
       },
       {
-        def: 'Kenya',
-        a: 'KE'
+        a: 'KE',
+        d: 'Kenya'
       },
       {
-        def: 'Kiribati',
-        a: 'KI'
+        a: 'KI',
+        d: 'Kiribati'
       },
       {
-        def: 'North Korea',
-        a: 'KP'
+        a: 'KP',
+        d: 'North Korea'
       },
       {
-        def: 'South Korea',
-        a: 'KR'
+        a: 'KR',
+        d: 'South Korea'
       },
       {
-        def: 'Kuwait',
-        a: 'KW'
+        a: 'KW',
+        d: 'Kuwait'
       },
       {
-        def: 'Kyrgyzstan',
-        a: 'KG'
+        a: 'KG',
+        d: 'Kyrgyzstan'
       },
       {
-        def: 'Laos',
-        a: 'LA'
+        a: 'LA',
+        d: 'Laos'
       },
       {
-        def: 'Latvia',
-        a: 'LV'
+        a: 'LV',
+        d: 'Latvia'
       },
       {
-        def: 'Lebanon',
-        a: 'LB'
+        a: 'LB',
+        d: 'Lebanon'
       },
       {
-        def: 'Lesotho',
-        a: 'LS'
+        a: 'LS',
+        d: 'Lesotho'
       },
       {
-        def: 'Liberia',
-        a: 'LR'
+        a: 'LR',
+        d: 'Liberia'
       },
       {
-        def: 'Libya',
-        a: 'LY'
+        a: 'LY',
+        d: 'Libya'
       },
       {
-        def: 'Liechtenstein',
-        a: 'LI'
+        a: 'LI',
+        d: 'Liechtenstein'
       },
       {
-        def: 'Lithuania',
-        a: 'LT'
+        a: 'LT',
+        d: 'Lithuania'
       },
       {
-        def: 'Luxembourg',
-        a: 'LU'
+        a: 'LU',
+        d: 'Luxembourg'
       },
       {
-        def: 'Macao',
-        a: 'MO'
+        a: 'MO',
+        d: 'Macao'
       },
       {
-        def: 'Madagascar',
-        a: 'MG'
+        a: 'MG',
+        d: 'Madagascar'
       },
       {
-        def: 'Malawi',
-        a: 'MW'
+        a: 'MW',
+        d: 'Malawi'
       },
       {
-        def: 'Malaysia',
-        a: 'MY'
+        a: 'MY',
+        d: 'Malaysia'
       },
       {
-        def: 'Maldives',
-        a: 'MV'
+        a: 'MV',
+        d: 'Maldives'
       },
       {
-        def: 'Mali',
-        a: 'ML'
+        a: 'ML',
+        d: 'Mali'
       },
       {
-        def: 'Malta',
-        a: 'MT'
+        a: 'MT',
+        d: 'Malta'
       },
       {
-        def: 'Marshall Islands',
-        a: 'MH'
+        a: 'MH',
+        d: 'Marshall Islands'
       },
       {
-        def: 'Martinique',
-        a: 'MQ'
+        a: 'MQ',
+        d: 'Martinique'
       },
       {
-        def: 'Mauritania',
-        a: 'MR'
+        a: 'MR',
+        d: 'Mauritania'
       },
       {
-        def: 'Mauritius',
-        a: 'MU'
+        a: 'MU',
+        d: 'Mauritius'
       },
       {
-        def: 'Mayotte',
-        a: 'YT'
+        a: 'YT',
+        d: 'Mayotte'
       },
       {
-        def: 'Mexico',
-        a: 'MX'
+        a: 'MX',
+        d: 'Mexico'
       },
       {
-        def: 'Micronesia (Federated States of)',
-        a: 'FM'
+        a: 'FM',
+        d: 'Micronesia (Federated States of)'
       },
       {
-        def: 'Moldova',
-        a: 'MD'
+        a: 'MD',
+        d: 'Moldova'
       },
       {
-        def: 'Monaco',
-        a: 'MC'
+        a: 'MC',
+        d: 'Monaco'
       },
       {
-        def: 'Mongolia',
-        a: 'MN'
+        a: 'MN',
+        d: 'Mongolia'
       },
       {
-        def: 'Montenegro',
-        a: 'ME'
+        a: 'ME',
+        d: 'Montenegro'
       },
       {
-        def: 'Montserrat',
-        a: 'MS'
+        a: 'MS',
+        d: 'Montserrat'
       },
       {
-        def: 'Morocco',
-        a: 'MA'
+        a: 'MA',
+        d: 'Morocco'
       },
       {
-        def: 'Mozambique',
-        a: 'MZ'
+        a: 'MZ',
+        d: 'Mozambique'
       },
       {
-        def: 'Myanmar',
-        a: 'MM'
+        a: 'MM',
+        d: 'Myanmar'
       },
       {
-        def: 'Namibia',
-        a: 'NA'
+        a: 'NA',
+        d: 'Namibia'
       },
       {
-        def: 'Nauru',
-        a: 'NR'
+        a: 'NR',
+        d: 'Nauru'
       },
       {
-        def: 'Nepal',
-        a: 'NP'
+        a: 'NP',
+        d: 'Nepal'
       },
       {
-        def: 'Netherlands',
-        a: 'NL'
+        a: 'NL',
+        d: 'Netherlands'
       },
       {
-        def: 'New Caledonia',
-        a: 'NC'
+        a: 'NC',
+        d: 'New Caledonia'
       },
       {
-        def: 'New Zealand',
-        a: 'NZ'
+        a: 'NZ',
+        d: 'New Zealand'
       },
       {
-        def: 'Nicaragua',
-        a: 'NI'
+        a: 'NI',
+        d: 'Nicaragua'
       },
       {
-        def: 'Niger',
-        a: 'NE'
+        a: 'NE',
+        d: 'Niger'
       },
       {
-        def: 'Nigeria',
-        a: 'NG'
+        a: 'NG',
+        d: 'Nigeria'
       },
       {
-        def: 'Niue',
-        a: 'NU'
+        a: 'NU',
+        d: 'Niue'
       },
       {
-        def: 'Norfolk Island',
-        a: 'NF'
+        a: 'NF',
+        d: 'Norfolk Island'
       },
       {
-        def: 'North Macedonia',
-        a: 'MK'
+        a: 'MK',
+        d: 'North Macedonia'
       },
       {
-        def: 'Northern Mariana Islands',
-        a: 'MP'
+        a: 'MP',
+        d: 'Northern Mariana Islands'
       },
       {
-        def: 'Norway',
-        a: 'NO'
+        a: 'NO',
+        d: 'Norway'
       },
       {
-        def: 'Oman',
-        a: 'OM'
+        a: 'OM',
+        d: 'Oman'
       },
       {
-        def: 'Pakistan',
-        a: 'PK'
+        a: 'PK',
+        d: 'Pakistan'
       },
       {
-        def: 'Palau',
-        a: 'PW'
+        a: 'PW',
+        d: 'Palau'
       },
       {
-        def: 'Palestine, State of',
-        a: 'PS'
+        a: 'PS',
+        d: 'Palestine, State of'
       },
       {
-        def: 'Panama',
-        a: 'PA'
+        a: 'PA',
+        d: 'Panama'
       },
       {
-        def: 'Papua New Guinea',
-        a: 'PG'
+        a: 'PG',
+        d: 'Papua New Guinea'
       },
       {
-        def: 'Paraguay',
-        a: 'PY'
+        a: 'PY',
+        d: 'Paraguay'
       },
       {
-        def: 'Peru',
-        a: 'PE'
+        a: 'PE',
+        d: 'Peru'
       },
       {
-        def: 'Philippines',
-        a: 'PH'
+        a: 'PH',
+        d: 'Philippines'
       },
       {
-        def: 'Pitcairn',
-        a: 'PN'
+        a: 'PN',
+        d: 'Pitcairn'
       },
       {
-        def: 'Poland',
-        a: 'PL'
+        a: 'PL',
+        d: 'Poland'
       },
       {
-        def: 'Portugal',
-        a: 'PT'
+        a: 'PT',
+        d: 'Portugal'
       },
       {
-        def: 'Puerto Rico',
-        a: 'PR'
+        a: 'PR',
+        d: 'Puerto Rico'
       },
       {
-        def: 'Qatar',
-        a: 'QA'
+        a: 'QA',
+        d: 'Qatar'
       },
       {
-        def: 'Romania',
-        a: 'RO'
+        a: 'RO',
+        d: 'Romania'
       },
       {
-        def: 'Russian Federation',
-        a: 'RU'
+        a: 'RU',
+        d: 'Russian Federation'
       },
       {
-        def: 'Rwanda',
-        a: 'RW'
+        a: 'RW',
+        d: 'Rwanda'
       },
       {
-        def: 'Réunion',
-        a: 'RE'
+        a: 'RE',
+        d: 'Réunion'
       },
       {
-        def: 'Saint Barthélemy',
-        a: 'BL'
+        a: 'BL',
+        d: 'Saint Barthélemy'
       },
       {
-        def: 'Saint Helena, Ascension and Tristan da Cunha',
-        a: 'SH'
+        a: 'SH',
+        d: 'Saint Helena, Ascension and Tristan da Cunha'
       },
       {
-        def: 'Saint Kitts and Nevis',
-        a: 'KN'
+        a: 'KN',
+        d: 'Saint Kitts and Nevis'
       },
       {
-        def: 'Saint Lucia',
-        a: 'LC'
+        a: 'LC',
+        d: 'Saint Lucia'
       },
       {
-        def: 'Saint Martin (French part)',
-        a: 'MF'
+        a: 'MF',
+        d: 'Saint Martin (French part)'
       },
       {
-        def: 'Saint Pierre and Miquelon',
-        a: 'PM'
+        a: 'PM',
+        d: 'Saint Pierre and Miquelon'
       },
       {
-        def: 'Saint Vincent and the Grenadines',
-        a: 'VC'
+        a: 'VC',
+        d: 'Saint Vincent and the Grenadines'
       },
       {
-        def: 'Samoa',
-        a: 'WS'
+        a: 'WS',
+        d: 'Samoa'
       },
       {
-        def: 'San Marino',
-        a: 'SM'
+        a: 'SM',
+        d: 'San Marino'
       },
       {
-        def: 'Sao Tome and Principe',
-        a: 'ST'
+        a: 'ST',
+        d: 'Sao Tome and Principe'
       },
       {
-        def: 'Saudi Arabia',
-        a: 'SA'
+        a: 'SA',
+        d: 'Saudi Arabia'
       },
       {
-        def: 'Senegal',
-        a: 'SN'
+        a: 'SN',
+        d: 'Senegal'
       },
       {
-        def: 'Serbia',
-        a: 'RS'
+        a: 'RS',
+        d: 'Serbia'
       },
       {
-        def: 'Seychelles',
-        a: 'SC'
+        a: 'SC',
+        d: 'Seychelles'
       },
       {
-        def: 'Sierra Leone',
-        a: 'SL'
+        a: 'SL',
+        d: 'Sierra Leone'
       },
       {
-        def: 'Singapore',
-        a: 'SG'
+        a: 'SG',
+        d: 'Singapore'
       },
       {
-        def: 'Sint Maarten (Dutch part)',
-        a: 'SX'
+        a: 'SX',
+        d: 'Sint Maarten (Dutch part)'
       },
       {
-        def: 'Slovakia',
-        a: 'SK'
+        a: 'SK',
+        d: 'Slovakia'
       },
       {
-        def: 'Slovenia',
-        a: 'SI'
+        a: 'SI',
+        d: 'Slovenia'
       },
       {
-        def: 'Solomon Islands',
-        a: 'SB'
+        a: 'SB',
+        d: 'Solomon Islands'
       },
       {
-        def: 'Somalia',
-        a: 'SO'
+        a: 'SO',
+        d: 'Somalia'
       },
       {
-        def: 'South Africa',
-        a: 'ZA'
+        a: 'ZA',
+        d: 'South Africa'
       },
       {
-        def: 'South Georgia and the South Sandwich Islands',
-        a: 'GS'
+        a: 'GS',
+        d: 'South Georgia and the South Sandwich Islands'
       },
       {
-        def: 'South Sudan',
-        a: 'SS'
+        a: 'SS',
+        d: 'South Sudan'
       },
       {
-        def: 'Spain',
-        a: 'ES'
+        a: 'ES',
+        d: 'Spain'
       },
       {
-        def: 'Sri Lanka',
-        a: 'LK'
+        a: 'LK',
+        d: 'Sri Lanka'
       },
       {
-        def: 'Sudan',
-        a: 'SD'
+        a: 'SD',
+        d: 'Sudan'
       },
       {
-        def: 'Suriname',
-        a: 'SR'
+        a: 'SR',
+        d: 'Suriname'
       },
       {
-        def: 'Svalbard and Jan Mayen',
-        a: 'SJ'
+        a: 'SJ',
+        d: 'Svalbard and Jan Mayen'
       },
       {
-        def: 'Sweden',
-        a: 'SE'
+        a: 'SE',
+        d: 'Sweden'
       },
       {
-        def: 'Switzerland',
-        a: 'CH'
+        a: 'CH',
+        d: 'Switzerland'
       },
       {
-        def: 'Syrian Arab Republic',
-        a: 'SY'
+        a: 'SY',
+        d: 'Syrian Arab Republic'
       },
       {
-        def: 'Taiwan (Province of China)',
-        a: 'TW'
+        a: 'TW',
+        d: 'Taiwan (Province of China)'
       },
       {
-        def: 'Tajikistan',
-        a: 'TJ'
+        a: 'TJ',
+        d: 'Tajikistan'
       },
       {
-        def: 'Tanzania, the United Republic of',
-        a: 'TZ'
+        a: 'TZ',
+        d: 'Tanzania, the United Republic of'
       },
       {
-        def: 'Thailand',
-        a: 'TH'
+        a: 'TH',
+        d: 'Thailand'
       },
       {
-        def: 'Timor-Leste',
-        a: 'TL'
+        a: 'TL',
+        d: 'Timor-Leste'
       },
       {
-        def: 'Togo',
-        a: 'TG'
+        a: 'TG',
+        d: 'Togo'
       },
       {
-        def: 'Tokelau',
-        a: 'TK'
+        a: 'TK',
+        d: 'Tokelau'
       },
       {
-        def: 'Tonga',
-        a: 'TO'
+        a: 'TO',
+        d: 'Tonga'
       },
       {
-        def: 'Trinidad and Tobago',
-        a: 'TT'
+        a: 'TT',
+        d: 'Trinidad and Tobago'
       },
       {
-        def: 'Tunisia',
-        a: 'TN'
+        a: 'TN',
+        d: 'Tunisia'
       },
       {
-        def: 'Turkey',
-        a: 'TR'
+        a: 'TR',
+        d: 'Turkey'
       },
       {
-        def: 'Turkmenistan',
-        a: 'TM'
+        a: 'TM',
+        d: 'Turkmenistan'
       },
       {
-        def: 'Turks and Caicos Islands',
-        a: 'TC'
+        a: 'TC',
+        d: 'Turks and Caicos Islands'
       },
       {
-        def: 'Tuvalu',
-        a: 'TV'
+        a: 'TV',
+        d: 'Tuvalu'
       },
       {
-        def: 'Uganda',
-        a: 'UG'
+        a: 'UG',
+        d: 'Uganda'
       },
       {
-        def: 'Ukraine',
-        a: 'UA'
+        a: 'UA',
+        d: 'Ukraine'
       },
       {
-        def: 'United Arab Emirates',
-        a: 'AE'
+        a: 'AE',
+        d: 'United Arab Emirates'
       },
       {
-        def: 'United Kingdom',
-        a: 'GB'
+        a: 'GB',
+        d: 'United Kingdom'
       },
       {
-        def: 'United States Minor Outlying Islands',
-        a: 'UM'
+        a: 'UM',
+        d: 'United States Minor Outlying Islands'
       },
       {
-        def: 'United States of America',
-        a: 'US'
+        a: 'US',
+        d: 'United States of America'
       },
       {
-        def: 'Uruguay',
-        a: 'UY'
+        a: 'UY',
+        d: 'Uruguay'
       },
       {
-        def: 'Uzbekistan',
-        a: 'UZ'
+        a: 'UZ',
+        d: 'Uzbekistan'
       },
       {
-        def: 'Vanuatu',
-        a: 'VU'
+        a: 'VU',
+        d: 'Vanuatu'
       },
       {
-        def: 'Venezuela',
-        a: 'VE'
+        a: 'VE',
+        d: 'Venezuela'
       },
       {
-        def: 'Viet Nam',
-        a: 'VN'
+        a: 'VN',
+        d: 'Viet Nam'
       },
       {
-        def: 'Virgin Islands (British)',
-        a: 'VG'
+        a: 'VG',
+        d: 'Virgin Islands (British)'
       },
       {
-        def: 'Virgin Islands (U.S.)',
-        a: 'VI'
+        a: 'VI',
+        d: 'Virgin Islands (U.S.)'
       },
       {
-        def: 'Wallis and Futuna',
-        a: 'WF'
+        a: 'WF',
+        d: 'Wallis and Futuna'
       },
       {
-        def: 'Western Sahara',
-        a: 'EH'
+        a: 'EH',
+        d: 'Western Sahara'
       },
       {
-        def: 'Yemen',
-        a: 'YE'
+        a: 'YE',
+        d: 'Yemen'
       },
       {
-        def: 'Zambia',
-        a: 'ZM'
+        a: 'ZM',
+        d: 'Zambia'
       },
       {
-        def: 'Zimbabwe',
-        a: 'ZW'
+        a: 'ZW',
+        d: 'Zimbabwe'
       },
       {
-        def: 'Aland Islands',
-        a: 'AX'
+        a: 'AX',
+        d: 'Aland Islands'
       }
     ]
   }
