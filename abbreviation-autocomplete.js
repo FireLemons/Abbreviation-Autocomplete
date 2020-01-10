@@ -96,6 +96,9 @@ function insert (arr, range, compare, elem) {
       middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
     }
 
+    // guarantee middleIndex is within the bounds of arr
+    middleIndex = Math.min(arr.length - 1, Math.max(0, middleIndex))
+
     if (compare(arr[middleIndex], elem) > 0) {
       arr.splice(middleIndex, 0, elem)
     } else {
