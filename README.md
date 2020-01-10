@@ -29,7 +29,79 @@ e.g.
 
 ##### limit(Optional)
 The autocomplete results limit  
-`Infiity` by default
+`Infinity` by default
 ##### min-input-length(Optional)
-The minimum number of characters typed before autocomplete results are displayed
+The minimum number of characters typed before autocomplete results are displayed  
 1 by default
+
+## Example
+##### JS
+    const autocomplete = new Vue({
+      el: '#app',
+      data: {
+        abbreviations: [
+          {
+            a: 'AF',
+            d: 'Afghanistan'
+          },
+          {
+            a: 'AL',
+            d: 'Albania'
+          },
+          {
+            a: 'DZ',
+            d: 'Algeria'
+          },
+          {
+            a: 'AS',
+            d: 'American Samoa'
+          },
+          {
+            a: 'AD',
+            d: 'Andorra'
+          },
+          {
+            a: 'AO',
+            d: 'Angola'
+          },
+          {
+            a: 'AI',
+            d: 'Anguilla'
+          },
+          {
+            a: 'AQ',
+            d: 'Antarctica'
+          },
+          {
+            a: 'AG',
+            d: 'Antigua and Barbuda'
+          },
+          {
+            a: 'AR',
+            d: 'Argentina'
+          },
+          {
+            a: 'AM',
+            d: 'Armenia'
+          },
+          {
+            a: 'AW',
+            d: 'Aruba'
+          },
+          {
+            a: 'AU',
+            d: 'Australia'
+          },
+          {
+            a: 'AT',
+            d: 'Austria'
+          },
+          {
+            a: 'AZ',
+            d: 'Azerbaijan'
+          }
+        ]
+      }
+    })
+##### HTML
+    <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
