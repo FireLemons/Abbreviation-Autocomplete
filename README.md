@@ -35,6 +35,7 @@ The minimum number of characters typed before autocomplete results are displayed
 1 by default
 
 ## Example
+[Live Example](https://firelemons.github.io/AutocompleteExample/)
 ##### JS
     const autocomplete = new Vue({
       el: '#app',
