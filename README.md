@@ -103,5 +103,5 @@ The minimum number of characters typed before autocomplete results are displayed
         ]
       }
     })
-##### HTML
+##### Template
     <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
