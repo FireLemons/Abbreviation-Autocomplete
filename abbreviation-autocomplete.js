@@ -48,14 +48,10 @@ function countingSort (arrReduced, elem) {
 //    where
 //      a is the first index of an element of the category elem belongs to
 //      b is the last index of an element of the category elem belongs to including elem
-//  @param {function} compare(a, b) The comparison to determine the sorted order within each category
-//    @param  {object} a The first element to be compared
-//    @param  {object} b The second element to be compared
-//    @return {number} A negative number if "b" comes before "a", 0 if "a" is equal to "b", a positive number if "a" comes before "b"
 //  @param {object} elem The element to be inserted into "arr"
 //  @throws {TypeError} for incorrect parameter types
 //  @throws {ReferenceError} for incorrect parameter formats
-function insert (arr, range, compare, elem) {
+function insert (arr, range, elem) {
   if (!(arr instanceof Array)) {
     throw new TypeError('1st param "arr" must be an array')
   }
@@ -66,10 +62,6 @@ function insert (arr, range, compare, elem) {
     throw new ReferenceError('2nd param "range" must have at least 2 elements')
   } else if (range[0] !== Math.floor(range[0]) || range[1] !== Math.floor(range[1])) {
     throw new ReferenceError('2nd param "range" must have starting and ending indicies of a category "elem" belongs to')
-  }
-
-  if (!(compare instanceof Function)) {
-    throw new TypeError('3rd param "compare" must be a function')
   }
 
   if (range[0] === range[1]) {
@@ -111,7 +103,7 @@ Vue.component('abbreviation-autocomplete', {
           // if user input is a substring of this definition
           if (index >= 0) {
             countingSort(countingSortData, index)
-            insert(relatedResults, countingSortData[index], (a, b) => a.d.localeCompare(b.d), elem)
+            insert(relatedResults, countingSortData[index], elem)
             elem.substrIndex = index
           }
         })
