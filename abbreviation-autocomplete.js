@@ -75,35 +75,7 @@ function insert (arr, range, compare, elem) {
   if (range[0] === range[1]) {
     arr.splice(range[0], 0, elem)
   } else {
-    let lowerIndex = range[0]
-    let upperIndex = range[1] - 1
-    let middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
-
-    while (lowerIndex < upperIndex) {
-      switch (compare(arr[middleIndex], elem)) {
-        case 1: // elem comes before middle
-          upperIndex = middleIndex - 1
-          break
-        case 0: // obvious
-          arr.splice(middleIndex, 0, elem)
-
-          return
-        case -1: // elem comes after middle
-          lowerIndex = middleIndex + 1
-          break
-      }
-
-      middleIndex = Math.floor((upperIndex + lowerIndex) / 2)
-    }
-
-    // guarantee middleIndex is within the bounds of arr
-    middleIndex = Math.min(arr.length - 1, Math.max(0, middleIndex))
-
-    if (compare(arr[middleIndex], elem) > 0) {
-      arr.splice(middleIndex, 0, elem)
-    } else {
-      arr.splice(middleIndex + 1, 0, elem)
-    }
+    arr.splice(range[1], 0, elem)
   }
 }
 
@@ -200,5 +172,9 @@ Vue.component('abbreviation-autocomplete', {
     </li>
   </ul>
 </div>
-`
+`,
+  mounted: function(){
+    this.data.sort((a, b) => a.d.localeCompare(b.d))
+    console.log(this.data)
+  }
 })
