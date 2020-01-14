@@ -42,7 +42,7 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
       }
     }
 
-    if(i < 0){
+    if (i < 0) {
       arrReduced[elemGroup] = [0, 0]
     }
   }
@@ -143,7 +143,7 @@ Vue.component('abbreviation-autocomplete', {
   </ul>
 </div>
 `,
-  mounted: function(){
+  mounted: function () {
     this.data.sort((a, b) => a.d.localeCompare(b.d))
   }
 })
