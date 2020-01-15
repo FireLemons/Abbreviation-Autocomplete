@@ -65,7 +65,7 @@ Vue.component('abbreviation-autocomplete', {
       default: Infinity,
       type: Number
     },
-    'min-input-length': {
+    minInputLength: {
       default: 1,
       type: Number
     }
