@@ -55,6 +55,7 @@ Vue.component('abbreviation-autocomplete', {
     return {
       focused: false,
       input: '',
+      loading: false,
       recentlySelected: false,
       searchList: [],
       selected: -1
@@ -82,6 +83,7 @@ Vue.component('abbreviation-autocomplete', {
       }
 
       if (this.input.length >= this.minInputLength) {
+        this.loading = true
         this.searchList = this.loadRelatedItems()
       } else {
         this.searchList = []
@@ -103,6 +105,7 @@ Vue.component('abbreviation-autocomplete', {
         }
       })
 
+      this.loading = false
       this.searchList = relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
     },
 
@@ -139,6 +142,18 @@ Vue.component('abbreviation-autocomplete', {
 <div class="abbreviation-autocomplete">
   <input type="text" v-model="input" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
+    <li v-show="loading">
+      Fetching Relevant Items 
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="3"/>
+      </svg> 
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="3"/>
+      </svg> 
+      <svg height="10" width="10">
+        <circle cx="5" cy="5" r="3"/>
+      </svg> 
+    </li>
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
       <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ input }}</span><span>{{ element.d.substr(element.substrIndex + input.length) }})</span>
