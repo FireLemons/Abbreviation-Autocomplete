@@ -105,8 +105,8 @@ Vue.component('abbreviation-autocomplete', {
         }
       })
 
-      this.loading = false
       this.searchList = relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
+      this.loading = false
     },
 
     onUnfocus: function () {
