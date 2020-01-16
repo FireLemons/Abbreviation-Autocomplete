@@ -106,3 +106,15 @@ The minimum number of characters typed before autocomplete results are displayed
     })
 ##### Template
     <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+
+## Debounce
+
+If the autocomplete data is large enough to cause a delay in performance, lodash's `debounce` will delay fetching of autocomplete results until the user stops typing. 
+
+For the debounced version, pull from the `lodash` branch, load lodash.js and set the `debounce-wait` prop
+
+##### debounce-wait(Optional)
+The time in milliseconds since the last character typed until the user is considered to have finished typing
+
+##### Example Template
+    <abbreviation-autocomplete :data="abbreviations" :debounce-wait="300" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
