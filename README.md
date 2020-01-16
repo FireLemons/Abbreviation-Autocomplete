@@ -109,7 +109,7 @@ The minimum number of characters typed before autocomplete results are displayed
 
 ## Debounce
 
-If the autocomplete data is large enough to cause a delay in performance, lodash's `debounce` will delay fetching of autocomplete results until the user stops typing. 
+If the autocomplete data is large enough to cause noticably poor performance, lodash's `debounce` can delay fetching of autocomplete results until the user stops typing. 
 
 For the debounced version, pull from the `lodash` branch, load lodash.js and set the `debounce-wait` prop
 
