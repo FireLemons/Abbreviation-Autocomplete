@@ -143,7 +143,6 @@ Vue.component('abbreviation-autocomplete', {
   <input type="text" v-model="input" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-show="loading">
-      Fetching Relevant Items 
       <svg height="10" width="10">
         <circle cx="5" cy="5" r="3"/>
       </svg> 
