@@ -42,7 +42,7 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
       }
     }
 
-    if(i < 0){
+    if (i < 0) {
       arrReduced[elemGroup] = [0, 0]
     }
   }
@@ -86,27 +86,30 @@ Vue.component('abbreviation-autocomplete', {
         this.loading = true
         this.searchList = this.loadRelatedItems()
       } else {
+        this.loading = false
         this.searchList = []
       }
     }
   },
   methods: {
-    loadRelatedItems: function(){
-      const countingSortData = []
-      const relatedResults = []
+    loadRelatedItems: function () {
+      if (this.input.length >= this.minInputLength) {
+        const countingSortData = []
+        const relatedResults = []
 
-      this.data.forEach((elem) => {
-        const index = elem.d.toLowerCase().indexOf(this.input.toLowerCase())
+        this.data.forEach((elem) => {
+          const index = elem.d.toLowerCase().indexOf(this.input.toLowerCase())
 
-        // if user input is a substring of this definition
-        if (index >= 0) {
-          countingSortInsert(relatedResults, countingSortData, elem, index)
-          elem.substrIndex = index
-        }
-      })
+          // if user input is a substring of this definition
+          if (index >= 0) {
+            countingSortInsert(relatedResults, countingSortData, elem, index)
+            elem.substrIndex = index
+          }
+        })
 
-      this.searchList = relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
-      this.loading = false
+        this.searchList = relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
+        this.loading = false
+      }
     },
 
     onUnfocus: function () {
@@ -160,10 +163,10 @@ Vue.component('abbreviation-autocomplete', {
   </ul>
 </div>
 `,
-  created: function(){
+  created: function () {
     this.data.sort((a, b) => a.d.localeCompare(b.d))
 
-    if(this.debounceWait){
+    if (this.debounceWait) {
       this.loadRelatedItems = _.debounce(this.loadRelatedItems, this.debounceWait)
     }
   }
