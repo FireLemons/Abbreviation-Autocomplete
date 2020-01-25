@@ -75,20 +75,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   watch: {
     input: function () {
-      if (this.recentlySelected) {
-        this.recentlySelected = false
-      } else {
-        this.focused = true
-        this.selected = -1
-      }
-
-      if (this.input.length >= this.minInputLength) {
-        this.loading = true
-        this.searchList = this.loadRelatedItems()
-      } else {
-        this.loading = false
-        this.searchList = []
-      }
+      this.onInputChange()
     }
   },
   methods: {
@@ -109,11 +96,33 @@ Vue.component('abbreviation-autocomplete', {
 
         this.searchList = relatedResults.length <= this.limit ? relatedResults : relatedResults.slice(0, this.limit)
         this.loading = false
+      } else {
+        return []
+      }
+    },
+    onInputChange: function () {
+      if (this.recentlySelected) {
+        this.recentlySelected = false
+      } else {
+        this.focused = true
+        this.selected = -1
+      }
+
+      if (this.input.length >= this.minInputLength) {
+        this.loading = true
+        this.searchList = this.loadRelatedItems()
+      } else {
+        this.loading = false
+        this.searchList = []
       }
     },
 
     onUnfocus: function () {
       this.focused = false
+    },
+
+    print: function (msg) {
+      console.log(msg)
     },
 
     select: function () {
@@ -168,6 +177,42 @@ Vue.component('abbreviation-autocomplete', {
 
     if (this.debounceWait) {
       this.loadRelatedItems = _.debounce(this.loadRelatedItems, this.debounceWait)
+    }
+
+    const listeners = this.$listeners
+
+    // Only emit if there's a listener attached on creation
+    if (listeners) {
+      if (listeners['input-change']) {
+        this.onInputChange = () => {
+          if (this.recentlySelected) {
+            this.recentlySelected = false
+          } else {
+            this.focused = true
+            this.selected = -1
+            this.$emit('input-change')
+          }
+
+          if (this.input.length >= this.minInputLength) {
+            this.loading = true
+            this.searchList = this.loadRelatedItems()
+          } else {
+            this.loading = false
+            this.searchList = []
+          }
+        }
+      }
+
+      if (listeners.select) {
+        this.select = () => {
+          if (this.selected !== -1) {
+            this.focused = false
+            this.input = this.searchList[this.selected].a
+            this.recentlySelected = true
+            this.$emit('select')
+          }
+        }
+      }
     }
   }
 })
