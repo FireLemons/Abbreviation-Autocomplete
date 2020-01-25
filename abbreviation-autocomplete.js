@@ -94,15 +94,19 @@ Vue.component('abbreviation-autocomplete', {
   },
   watch: {
     input: function () {
+      this.onInputChange()
+    }
+  },
+  methods: {
+    onInputChange: function() {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
         this.focused = true
         this.selected = -1
       }
-    }
-  },
-  methods: {
+    },
+
     onUnfocus: function () {
       this.focused = false
     },
@@ -143,7 +147,35 @@ Vue.component('abbreviation-autocomplete', {
   </ul>
 </div>
 `,
-  mounted: function () {
+  created: function () {
     this.data.sort((a, b) => a.d.localeCompare(b.d))
+
+    let listeners = this.$listeners
+
+    // Only emit if there's a listener attached on creation
+    if(listeners) {
+      if(listeners['input-change']) {
+        this.onInputChange = () => {
+          if (this.recentlySelected) {
+            this.recentlySelected = false
+          } else {
+            this.focused = true
+            this.selected = -1
+            this.$emit('input-change')
+          }
+        }
+      }
+
+      if(listeners.select) {
+        this.select = () => {
+          if (this.selected !== -1) {
+            this.focused = false
+            this.input = this.searchList[this.selected].a
+            this.recentlySelected = true
+            this.$emit('select')
+          }
+        }
+      }
+    }
   }
 })
