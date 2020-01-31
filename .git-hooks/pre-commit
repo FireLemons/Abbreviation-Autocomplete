@@ -1,9 +1,24 @@
 #!/bin/bash
 
-fullJSLastModified=$(date -r abbreviation-autocomplete.js +%s)
+JSLastModified=$(date -r abbreviation-autocomplete.js +%s)
 minifiedJSLastModified=$(date -r abbreviation-autocomplete.min.js +%s)
 
-if [ $fullJSLastModified -gt $minifiedJSLastModified ]; then
+if [[ $1 == "-a" || $1 == "--all" ]];then
+  # All files tracked by git
+  changed_files=($(git ls-tree -r master --name-only))
+else
+  # Staged files
+  changed_files=($(git diff --name-only --cached))
+fi
+
+for file in "${changed_files[@]}"; do
+  if [[ $file == "abbreviation-autocomplete.js" ]]; then
+    JSChanged=1
+    break
+  fi
+done
+
+if [[ $JSChanged && $JSLastModified -gt $minifiedJSLastModified ]]; then
   echo "ERROR: minified version is not up to date"
   exit 1
 fi
