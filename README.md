@@ -34,87 +34,15 @@ The autocomplete results limit
 The minimum number of characters typed before autocomplete results are displayed  
 1 by default
 
-## Example
-[Live Example](https://firelemons.github.io/AutocompleteExample/)
-##### JS
-    const autocomplete = new Vue({
-      el: '#app',
-      data: {
-        abbreviations: [
-          {
-            a: 'AF',
-            d: 'Afghanistan'
-          },
-          {
-            a: 'AL',
-            d: 'Albania'
-          },
-          {
-            a: 'DZ',
-            d: 'Algeria'
-          },
-          {
-            a: 'AS',
-            d: 'American Samoa'
-          },
-          {
-            a: 'AD',
-            d: 'Andorra'
-          },
-          {
-            a: 'AO',
-            d: 'Angola'
-          },
-          {
-            a: 'AI',
-            d: 'Anguilla'
-          },
-          {
-            a: 'AQ',
-            d: 'Antarctica'
-          },
-          {
-            a: 'AG',
-            d: 'Antigua and Barbuda'
-          },
-          {
-            a: 'AR',
-            d: 'Argentina'
-          },
-          {
-            a: 'AM',
-            d: 'Armenia'
-          },
-          {
-            a: 'AW',
-            d: 'Aruba'
-          },
-          {
-            a: 'AU',
-            d: 'Australia'
-          },
-          {
-            a: 'AT',
-            d: 'Austria'
-          },
-          {
-            a: 'AZ',
-            d: 'Azerbaijan'
-          }
-        ]
-      }
-    })
-##### Template
-    <abbreviation-autocomplete :data="abbreviations" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+## [Example](https://firelemons.github.io/AutocompleteExample/)
 
 ## Debounce
 
 If the autocomplete data is large enough to cause noticably poor performance, lodash's `debounce` can delay fetching of autocomplete results until the user stops typing. 
 
-For the debounced version, pull from the `lodash` branch, load lodash.js and set the `debounce-wait` prop
+For the debounced version, checkout the `lodash` branch, load lodash.js and set the `debounce-wait` prop
 
 ##### debounce-wait(Optional)
 The time in milliseconds since the last character typed until the user is considered to have finished typing
 
-##### Example Template
-    <abbreviation-autocomplete :data="abbreviations" :debounce-wait="300" :limit="10" :min-input-length="2"></abbreviation-autocomplete>
+##### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
