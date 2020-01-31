@@ -12,15 +12,15 @@ else
 fi
 
 for file in "${changed_files[@]}"; do
-  if [[ $file == abbreviation-autocomplete*.js ]]; then
+  if [[ $file == abbreviation-autocomplete*.js ]];then
     JSChanged=1
     break
   fi
 done
 
-if [[ $JSChanged && $JSLastModified -gt $minifiedJSLastModified ]]; then
+if [[ $JSChanged && $JSLastModified -gt $minifiedJSLastModified ]];then
   echo "ERROR: minified version is not up to date"
   exit 1
-else
+elif [[ $JSChanged ]];then 
   echo "INFO: minified js has been modified after original js file and is believed to be up to date"
 fi
