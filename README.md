@@ -34,7 +34,14 @@ The autocomplete results limit
 The minimum number of characters typed before autocomplete results are displayed  
 1 by default
 
-## [Example](https://firelemons.github.io/AutocompleteExample/)
+## Events  
+##### @input-change
+Triggered whenever the search text changes except when the text is changed via selecting an option in the dropdown
+
+##### @select
+Triggered after selecting an option in the dropdown
+
+#### [Example](https://firelemons.github.io/AutocompleteExample/)
 
 ## Debounce
 
@@ -45,4 +52,4 @@ For the debounced version, checkout the `lodash` branch, load lodash.js and set 
 ##### debounce-wait(Optional)
 The time in milliseconds since the last character typed until the user is considered to have finished typing
 
-##### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
+#### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
