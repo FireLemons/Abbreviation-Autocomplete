@@ -54,13 +54,16 @@ Vue.component('abbreviation-autocomplete', {
   data: function () {
     return {
       focused: false,
-      input: '',
       recentlySelected: false,
       selected: -1
     }
   },
   props: {
     data: Array,
+    input: {
+      default: '',
+      type: String
+    },
     limit: {
       default: Infinity,
       type: Number
@@ -152,24 +155,25 @@ Vue.component('abbreviation-autocomplete', {
 
     let listeners = this.$listeners
 
-    // Only emit if there's a listener attached on creation
-    if(listeners) {
-      if(listeners['input-change']) {
+    // Only emit for listeners attached on creation
+    if(listeners){
+      if(listeners['update:input']) {
         this.onInputChange = () => {
           if (this.recentlySelected) {
             this.recentlySelected = false
           } else {
             this.focused = true
             this.selected = -1
-            this.$emit('input-change', this.input)
+            this.$emit('update:input', this.input)
           }
         }
       }
 
-      if(listeners.select) {
+      if(listeners && listeners.select) {
         this.select = () => {
           if (this.selected !== -1) {
             this.focused = false
+            delete this.searchList[this.selected].substrIndex
             this.$emit('select', this.searchList[this.selected])
             this.input = this.searchList[this.selected].a
             this.recentlySelected = true
