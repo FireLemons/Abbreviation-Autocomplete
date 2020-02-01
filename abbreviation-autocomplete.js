@@ -161,7 +161,7 @@ Vue.component('abbreviation-autocomplete', {
           } else {
             this.focused = true
             this.selected = -1
-            this.$emit('input-change')
+            this.$emit('input-change', this.input)
           }
         }
       }
@@ -170,9 +170,9 @@ Vue.component('abbreviation-autocomplete', {
         this.select = () => {
           if (this.selected !== -1) {
             this.focused = false
+            this.$emit('select', this.searchList[this.selected])
             this.input = this.searchList[this.selected].a
             this.recentlySelected = true
-            this.$emit('select')
           }
         }
       }
