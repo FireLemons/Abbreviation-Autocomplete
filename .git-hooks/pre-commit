@@ -3,23 +3,24 @@
 JSLastModified=$(date -r abbreviation-autocomplete.js +%s)
 minifiedJSLastModified=$(date -r abbreviation-autocomplete.min.js +%s)
 
-if [[ $1 == "-a" || $1 == "--all" ]];then
-  # All files tracked by git
-  changed_files=($(git ls-tree -r master --name-only))
-else
-  # Staged files
-  changed_files=($(git diff --name-only --cached))
-fi
+# Staged files
+changed_files=($(git diff --name-only --cached))
 
 for file in "${changed_files[@]}"; do
-  if [[ $file == abbreviation-autocomplete*.js ]];then
+  if [[ $file == abbreviation-autocomplete.js ]];then
     JSChanged=1
-    break
+  elif [[ $file == abbreviation-autocomplete.min.js ]];then
+    minifiedJSChanged=1
   fi
 done
 
-if [[ $JSChanged && $JSLastModified -gt $minifiedJSLastModified ]];then
-  echo "ERROR: minified version is not up to date"
+if [[ $JSChanged && ($JSLastModified -gt $minifiedJSLastModified || !$minifiedJSChanged) ]];then
+  echo "ERROR: staged minified version is not up to date"
+  if [[ $JSLastModified -gt $minifiedJSLastModified ]];then
+    echo "INFO: Auto minifying"
+    npx minify abbreviation-autocomplete.js > abbreviation-autocomplete.min.js
+  fi
+  echo "INFO: Please add abbreviation-autocomplete.min.js and recommit"
   exit 1
 elif [[ $JSChanged ]];then 
   echo "INFO: minified js has been modified after original js file and is believed to be up to date"
