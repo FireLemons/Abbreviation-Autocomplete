@@ -14,7 +14,7 @@ for file in "${changed_files[@]}"; do
   fi
 done
 
-if [[ $JSChanged && ($JSLastModified -gt $minifiedJSLastModified || !$minifiedJSChanged) ]];then
+if [[ $JSChanged && ($JSLastModified -gt $minifiedJSLastModified || ! $minifiedJSChanged) ]];then
   echo "ERROR: staged minified version is not up to date"
   if [[ $JSLastModified -gt $minifiedJSLastModified ]];then
     echo "INFO: Auto minifying"
