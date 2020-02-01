@@ -35,11 +35,13 @@ The minimum number of characters typed before autocomplete results are displayed
 1 by default
 
 ## Events  
-##### @input-change
-Triggered whenever the search text changes except when the text is changed via selecting an option in the dropdown
+##### @update:input
+Triggered whenever the search text changes except when the text is changed via selecting an option in the dropdown  
+Emits the text of the autocomplete search
 
 ##### @select
-Triggered after selecting an option in the dropdown
+Triggered after selecting an option in the dropdown  
+Emits the object representing the option selected
 
 #### [Example](https://firelemons.github.io/AutocompleteExample/)
 
