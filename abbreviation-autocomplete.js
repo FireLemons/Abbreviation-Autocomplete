@@ -164,8 +164,9 @@ Vue.component('abbreviation-autocomplete', {
           } else {
             this.focused = true
             this.selected = -1
-            this.$emit('update:input', this.input)
           }
+
+          this.$emit('update:input', this.input)
         }
       }
 
