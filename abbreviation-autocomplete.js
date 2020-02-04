@@ -183,14 +183,13 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit if there's a listener attached on creation
     if (listeners) {
-      if (listeners['input-change']) {
+      if (listeners['update:input']) {
         this.onInputChange = () => {
           if (this.recentlySelected) {
             this.recentlySelected = false
           } else {
             this.focused = true
             this.selected = -1
-            this.$emit('input-change')
           }
 
           if (this.input.length >= this.minInputLength) {
@@ -200,6 +199,8 @@ Vue.component('abbreviation-autocomplete', {
             this.loading = false
             this.searchList = []
           }
+
+          this.$emit('update:input', this.input)
         }
       }
 
@@ -207,9 +208,11 @@ Vue.component('abbreviation-autocomplete', {
         this.select = () => {
           if (this.selected !== -1) {
             this.focused = false
+            // clear key used for sorting autocomplete results
+            delete this.searchList[this.selected].substrIndex
+            this.$emit('select', this.searchList[this.selected])
             this.input = this.searchList[this.selected].a
             this.recentlySelected = true
-            this.$emit('select')
           }
         }
       }
