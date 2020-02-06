@@ -30,14 +30,19 @@ e.g.
 ##### limit(Optional)
 The autocomplete results limit  
 `Infinity` by default
-##### min-input-length(Optional)
+##### min-search-text-length(Optional)
 The minimum number of characters typed before autocomplete results are displayed  
 1 by default
 
 ## Events  
-##### @update:input
-Triggered whenever the search text changes except when the text is changed via selecting an option in the dropdown  
+##### @update:searchText
+Triggered whenever the search text changes
 Emits the text of the autocomplete search
+
+Supports two way binding  
+e.g.
+
+    v-bind:search-text.sync=""
 
 ##### @select
 Triggered after selecting an option in the dropdown  
