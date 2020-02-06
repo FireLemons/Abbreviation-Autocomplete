@@ -60,7 +60,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   props: {
     data: Array,
-    input: {
+    searchText: {
       default: '',
       type: String
     },
@@ -68,21 +68,21 @@ Vue.component('abbreviation-autocomplete', {
       default: Infinity,
       type: Number
     },
-    minInputLength: {
+    minSearchTextLength: {
       default: 1,
       type: Number
     }
   },
   computed: {
     searchList: function () {
-      if (this.input.length >= this.minInputLength) {
+      if (this.searchText.length >= this.minSearchTextLength) {
         const countingSortData = []
         const relatedResults = []
 
         this.data.forEach((elem) => {
-          const index = elem.d.toLowerCase().indexOf(this.input.toLowerCase())
+          const index = elem.d.toLowerCase().indexOf(this.searchText.toLowerCase())
 
-          // if user input is a substring of this definition
+          // if search text is a substring of this definition
           if (index >= 0) {
             countingSortInsert(relatedResults, countingSortData, elem, index)
             elem.substrIndex = index
@@ -96,12 +96,12 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
-    input: function () {
-      this.onInputChange()
+    searchText: function () {
+      this.onSearchTextChange()
     }
   },
   methods: {
-    onInputChange: function() {
+    onSearchTextChange: function() {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
@@ -117,7 +117,7 @@ Vue.component('abbreviation-autocomplete', {
     select: function () {
       if (this.selected !== -1) {
         this.focused = false
-        this.input = this.searchList[this.selected].a
+        this.searchText = this.searchList[this.selected].a
         this.recentlySelected = true
       }
     },
@@ -141,11 +141,11 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" v-model="input" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
-      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ input }}</span><span>{{ element.d.substr(element.substrIndex + input.length) }})</span>
+      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
     </li>
   </ul>
 </div>
@@ -157,8 +157,8 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit for listeners attached on creation
     if(listeners){
-      if(listeners['update:input']) {
-        this.onInputChange = () => {
+      if(listeners['update:searchText']) {
+        this.onSearchTextChange = () => {
           if (this.recentlySelected) {
             this.recentlySelected = false
           } else {
@@ -166,7 +166,7 @@ Vue.component('abbreviation-autocomplete', {
             this.selected = -1
           }
 
-          this.$emit('update:input', this.input)
+          this.$emit('update:searchText', this.searchText)
         }
       }
 
@@ -174,9 +174,10 @@ Vue.component('abbreviation-autocomplete', {
         this.select = () => {
           if (this.selected !== -1) {
             this.focused = false
+            // Delete the key used for sorting autocomplete results before emitting
             delete this.searchList[this.selected].substrIndex
             this.$emit('select', this.searchList[this.selected])
-            this.input = this.searchList[this.selected].a
+            this.searchText = this.searchList[this.selected].a
             this.recentlySelected = true
           }
         }
