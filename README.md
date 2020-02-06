@@ -48,7 +48,7 @@ e.g.
 Triggered after selecting an option in the dropdown  
 Emits the object representing the option selected
 
-#### [Example](https://firelemons.github.io/AutocompleteExample/)
+### [Example](https://firelemons.github.io/AutocompleteExample/)
 
 ## Debounce
 
@@ -59,4 +59,4 @@ For the debounced version, checkout the `lodash` branch, load lodash.js and set 
 ##### debounce-wait(Optional)
 The time in milliseconds since the last character typed until the user is considered to have finished typing
 
-#### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
+### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
