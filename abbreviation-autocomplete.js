@@ -59,10 +59,9 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   props: {
-    data: Array,
-    searchText: {
-      default: '',
-      type: String
+    data: {
+      required: true,
+      type: Array
     },
     limit: {
       default: Infinity,
@@ -71,6 +70,11 @@ Vue.component('abbreviation-autocomplete', {
     minSearchTextLength: {
       default: 1,
       type: Number
+    },
+    placeholder: String,
+    searchText: {
+      default: '',
+      type: String
     }
   },
   computed: {
@@ -141,7 +145,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
