@@ -62,7 +62,10 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   props: {
-    data: Array,
+    data: {
+      required: true,
+      type: Array
+    },
     debounceWait: Number,
     limit: {
       default: Infinity,
@@ -71,6 +74,11 @@ Vue.component('abbreviation-autocomplete', {
     minSearchTextLength: {
       default: 1,
       type: Number
+    },
+    placeholder: String,
+    searchText: {
+      default: '',
+      type: String
     }
   },
   watch: {
@@ -152,7 +160,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-show="loading">
       <svg height="10" width="10">
