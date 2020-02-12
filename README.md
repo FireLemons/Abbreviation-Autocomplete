@@ -33,6 +33,8 @@ The autocomplete results limit
 ##### min-search-text-length(Optional)
 The minimum number of characters typed before autocomplete results are displayed  
 1 by default
+##### placeholder
+Placeholder text for the search text input
 
 ## Events  
 ##### @update:searchText
