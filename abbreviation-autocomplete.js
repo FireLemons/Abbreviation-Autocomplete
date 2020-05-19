@@ -154,8 +154,18 @@ Vue.component('abbreviation-autocomplete', {
 </div>
 `,
   created: function () {
-    this.data.forEach((elem, index) => {
-      this.data[index] = {option: elem}
+    if(!(this.data instanceof Array)){
+      throw new TypeError('ERROR: The autocomplete data must be an array')
+    } else {
+      this.data.forEach((elem) => {
+        if (typeof elem !== 'string') {
+          throw new TypeError('ERROR: The autocomplete data array can only contain strings')
+        }
+      })
+    }
+
+    this.data.forEach((str, index) => {
+      this.data[index] = {option: str}
     })
 
     this.data.sort((a, b) => a.option.localeCompare(b.option))
