@@ -51,7 +51,7 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
 }
 
 Vue.component('abbreviation-autocomplete', {
-  data: function () {
+  data () {
     return {
       focused: false,
       recentlySelected: false,
@@ -78,7 +78,7 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   computed: {
-    searchList: function () {
+    searchList () {
       if (this.searchText.length >= this.minSearchTextLength) {
         const countingSortData = []
         const relatedResults = []
@@ -100,12 +100,12 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
-    searchText: function () {
+    searchText () {
       this.onSearchTextChange()
     }
   },
   methods: {
-    onSearchTextChange: function () {
+    onSearchTextChange () {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
@@ -114,11 +114,11 @@ Vue.component('abbreviation-autocomplete', {
       }
     },
 
-    onUnfocus: function () {
+    onUnfocus () {
       this.focused = false
     },
 
-    select: function () {
+    select () {
       if (this.selected !== -1) {
         this.focused = false
         this.searchText = this.searchList[this.selected].option
@@ -126,11 +126,11 @@ Vue.component('abbreviation-autocomplete', {
       }
     },
 
-    selectDown: function () {
+    selectDown () {
       this.selected = (this.selected + 1) % this.searchList.length
     },
 
-    selectUp: function () {
+    selectUp () {
       if (this.selected === -1) {
         this.selected = 0
       }
@@ -139,13 +139,12 @@ Vue.component('abbreviation-autocomplete', {
       this.selected = (this.selected + searchLength - 1) % searchLength
     },
 
-    setSelected: function (index) {
+    setSelected (index) {
       this.selected = index
     },
 
-    sortData: function () {
+    sortData () {
       this.data.sort((a, b) => a.option.localeCompare(b.option))
-      console.log(this.data)
     }
   },
   template: `
@@ -158,7 +157,7 @@ Vue.component('abbreviation-autocomplete', {
   </ul>
 </div>
 `,
-  created: function () {
+  created () {
     if(!(this.data instanceof Array)){
       throw new TypeError('ERROR: The autocomplete data must be an array')
     } else {
