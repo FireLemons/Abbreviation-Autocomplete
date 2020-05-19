@@ -88,8 +88,19 @@ Vue.component('abbreviation-autocomplete', {
           
           // if search text is a substring of this definition
           if (index >= 0) {
-            countingSortInsert(relatedResults, countingSortData, elem, index)
-            elem.substrIndex = index
+            let optionText = elem.option
+            let searchTextLength = this.searchText.length
+            let substrIndex = index
+
+            let dropDownOption = {
+              leftText: optionText.substr(0, substrIndex),
+              highlight: optionText.substr(substrIndex, searchTextLength),
+              rightText: optionText.substr(substrIndex + searchTextLength),
+
+              substrIndex: substrIndex
+            }
+
+            countingSortInsert(relatedResults, countingSortData, dropDownOption, index)
           }
         })
 
@@ -101,7 +112,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   watch: {
     data () {
-      this.sortData()
+      //this.sortData()
     },
     searchText () {
       this.onSearchTextChange()
@@ -155,7 +166,7 @@ Vue.component('abbreviation-autocomplete', {
   <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
-      <span> ({{ element.option.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.option.substr(element.substrIndex + searchText.length) }})</span>
+      <span> ({{ element.leftText }}</span><span class="highlight">{{ element.highlight }}</span><span>{{ element.rightText }})</span>
     </li>
   </ul>
 </div>
