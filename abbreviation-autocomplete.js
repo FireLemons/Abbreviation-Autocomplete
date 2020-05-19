@@ -105,7 +105,7 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   methods: {
-    onSearchTextChange: function() {
+    onSearchTextChange: function () {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
@@ -121,7 +121,7 @@ Vue.component('abbreviation-autocomplete', {
     select: function () {
       if (this.selected !== -1) {
         this.focused = false
-        this.searchText = this.searchList[this.selected]
+        this.searchText = this.searchList[this.selected].option
         this.recentlySelected = true
       }
     },
@@ -139,8 +139,13 @@ Vue.component('abbreviation-autocomplete', {
       this.selected = (this.selected + searchLength - 1) % searchLength
     },
 
-    setSelected (index) {
+    setSelected: function (index) {
       this.selected = index
+    },
+
+    sortData: function () {
+      this.data.sort((a, b) => a.option.localeCompare(b.option))
+      console.log(this.data)
     }
   },
   template: `
@@ -168,7 +173,7 @@ Vue.component('abbreviation-autocomplete', {
       this.data[index] = {option: str}
     })
 
-    this.data.sort((a, b) => a.option.localeCompare(b.option))
+    this.sortData()
 
     let listeners = this.$listeners
 
@@ -194,7 +199,7 @@ Vue.component('abbreviation-autocomplete', {
             // Delete the key used for sorting autocomplete results before emitting
             delete this.searchList[this.selected].substrIndex
             this.$emit('select', this.searchList[this.selected])
-            this.searchText = this.searchList[this.selected]
+            this.searchText = this.searchList[this.selected].option
             this.recentlySelected = true
           }
         }
