@@ -100,6 +100,9 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
+    data () {
+      this.sortData()
+    },
     searchText () {
       this.onSearchTextChange()
     }
