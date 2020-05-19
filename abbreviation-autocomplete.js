@@ -84,8 +84,8 @@ Vue.component('abbreviation-autocomplete', {
         const relatedResults = []
 
         this.data.forEach((elem) => {
-          const index = elem.d.toLowerCase().indexOf(this.searchText.toLowerCase())
-
+          const index = elem.string.toLowerCase().indexOf(this.searchText.toLowerCase())
+          
           // if search text is a substring of this definition
           if (index >= 0) {
             countingSortInsert(relatedResults, countingSortData, elem, index)
@@ -121,7 +121,7 @@ Vue.component('abbreviation-autocomplete', {
     select: function () {
       if (this.selected !== -1) {
         this.focused = false
-        this.searchText = this.searchList[this.selected].a
+        this.searchText = this.searchList[this.selected]
         this.recentlySelected = true
       }
     },
@@ -148,14 +148,17 @@ Vue.component('abbreviation-autocomplete', {
   <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
-      <span>{{ element.a }}</span>
-      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
+      <span> ({{ element.string.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.string.substr(element.substrIndex + searchText.length) }})</span>
     </li>
   </ul>
 </div>
 `,
   created: function () {
-    this.data.sort((a, b) => a.d.localeCompare(b.d))
+    this.data.forEach((elem, index) => {
+      this.data[index] = {string: elem}
+    })
+
+    this.data.sort((a, b) => a.string.localeCompare(b.string))
 
     let listeners = this.$listeners
 
@@ -181,7 +184,7 @@ Vue.component('abbreviation-autocomplete', {
             // Delete the key used for sorting autocomplete results before emitting
             delete this.searchList[this.selected].substrIndex
             this.$emit('select', this.searchList[this.selected])
-            this.searchText = this.searchList[this.selected].a
+            this.searchText = this.searchList[this.selected]
             this.recentlySelected = true
           }
         }
