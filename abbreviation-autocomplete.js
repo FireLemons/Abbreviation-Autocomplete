@@ -78,12 +78,23 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   computed: {
+    dataSorted () {
+      let dataCopy = this.data.slice()
+
+      dataCopy.forEach((str, index) => {
+        dataCopy[index] = {option: str}
+      })
+      this.sortData(dataCopy)
+
+      return dataCopy
+    },
+
     searchList () {
       if (this.searchText.length >= this.minSearchTextLength) {
         const countingSortData = []
         const relatedResults = []
 
-        this.data.forEach((elem) => {
+        this.dataSorted.forEach((elem) => {
           const index = elem.option.toLowerCase().indexOf(this.searchText.toLowerCase())
           
           // if search text is a substring of this definition
@@ -111,9 +122,6 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
-    data () {
-      //this.sortData()
-    },
     searchText () {
       this.onSearchTextChange()
     }
@@ -157,8 +165,8 @@ Vue.component('abbreviation-autocomplete', {
       this.selected = index
     },
 
-    sortData () {
-      this.data.sort((a, b) => a.option.localeCompare(b.option))
+    sortData (arr) {
+      arr.sort((a, b) => a.option.localeCompare(b.option))
     }
   },
   template: `
@@ -166,7 +174,7 @@ Vue.component('abbreviation-autocomplete', {
   <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
-      <span> ({{ element.leftText }}</span><span class="highlight">{{ element.highlight }}</span><span>{{ element.rightText }})</span>
+      <span> {{ element.leftText }}</span><span class="highlight">{{ element.highlight }}</span><span>{{ element.rightText }}</span>
     </li>
   </ul>
 </div>
@@ -181,12 +189,6 @@ Vue.component('abbreviation-autocomplete', {
         }
       })
     }
-
-    this.data.forEach((str, index) => {
-      this.data[index] = {option: str}
-    })
-
-    this.sortData()
 
     let listeners = this.$listeners
 
