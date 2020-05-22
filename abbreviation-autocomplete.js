@@ -108,6 +108,7 @@ Vue.component('abbreviation-autocomplete', {
               highlight: optionText.substr(substrIndex, searchTextLength),
               rightText: optionText.substr(substrIndex + searchTextLength),
 
+              option: optionText,
               substrIndex: substrIndex
             }
 
