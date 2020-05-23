@@ -54,8 +54,44 @@ Vue.component('abbreviation-autocomplete', {
   data () {
     return {
       focused: false,
+      listener: {
+        searchTextEnabled: false,
+        selectEnabled: false
+      },
       recentlySelected: false,
-      selected: -1
+      selected: -1,
+      unprintableKeys: [
+        'Alt',
+        'ArrowDown',
+        'ArrowLeft',
+        'ArrorRight',
+        'ArrowUp',
+        'CapsLock',
+        'ContextMenu',
+        'Control',
+        'Delete',
+        'End',
+        'Escape',
+        'F1',
+        'F2',
+        'F3',
+        'F4',
+        'F5',
+        'F6',
+        'F7',
+        'F8',
+        'F9',
+        'F10',
+        'F11',
+        'F12',
+        'Home',
+        'Insert',
+        'NumLock',
+        'PageUp',
+        'PageDown',
+        'Shift',
+        'Tab'
+      ]
     }
   },
   props: {
@@ -122,18 +158,19 @@ Vue.component('abbreviation-autocomplete', {
       }
     }
   },
-  watch: {
-    searchText () {
-      this.onSearchTextChange()
-    }
-  },
   methods: {
-    onSearchTextChange () {
-      if (this.recentlySelected) {
-        this.recentlySelected = false
-      } else {
-        this.focused = true
-        this.selected = -1
+    onSearchTextType (keyPress) {
+      if (!this.unprintableKeys.includes(keyPress.key)) {
+        if (this.recentlySelected) {
+          this.recentlySelected = false
+        } else {
+          this.focused = true
+          this.selected = -1
+        }
+
+        if (this.listener.searchTextEnabled) {
+          this.$emit('update:searchText', this.searchText)
+        }
       }
     },
 
@@ -144,6 +181,13 @@ Vue.component('abbreviation-autocomplete', {
     select () {
       if (this.selected !== -1) {
         this.focused = false
+
+        if (this.listener.selectEnabled) {
+          // Delete the key used for sorting autocomplete results before emitting
+          delete this.searchList[this.selected].substrIndex
+          this.$emit('select', this.searchList[this.selected])
+        }
+
         this.searchText = this.searchList[this.selected].option
         this.recentlySelected = true
       }
@@ -172,7 +216,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keyup="onSearchTextType" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span> {{ element.leftText }}</span><span class="highlight">{{ element.highlight }}</span><span>{{ element.rightText }}</span>
@@ -196,29 +240,11 @@ Vue.component('abbreviation-autocomplete', {
     // Only emit for listeners attached on creation
     if(listeners){
       if(listeners['update:searchText']) {
-        this.onSearchTextChange = () => {
-          if (this.recentlySelected) {
-            this.recentlySelected = false
-          } else {
-            this.focused = true
-            this.selected = -1
-          }
-
-          this.$emit('update:searchText', this.searchText)
-        }
+        this.listener.searchTextEnabled = true
       }
 
       if(listeners && listeners.select) {
-        this.select = () => {
-          if (this.selected !== -1) {
-            this.focused = false
-            // Delete the key used for sorting autocomplete results before emitting
-            delete this.searchList[this.selected].substrIndex
-            this.$emit('select', this.searchList[this.selected])
-            this.searchText = this.searchList[this.selected].option
-            this.recentlySelected = true
-          }
-        }
+        this.listener.selectEnabled = true
       }
     }
   }
