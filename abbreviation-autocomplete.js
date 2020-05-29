@@ -69,7 +69,6 @@ Vue.component('abbreviation-autocomplete', {
         'CapsLock',
         'ContextMenu',
         'Control',
-        'Delete',
         'End',
         'Escape',
         'F1',
