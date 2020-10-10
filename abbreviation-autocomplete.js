@@ -141,6 +141,10 @@ Vue.component('abbreviation-autocomplete', {
 
     setSelected (index) {
       this.selected = index
+    },
+
+    isOption: function(caseSensitive=true) {
+      return this.data.some(el => caseSensitive ? el.a == this.searchText : el.a.toLowerCase() === this.searchText.toLowerCase())
     }
   },
   template: `
