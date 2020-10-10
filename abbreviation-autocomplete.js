@@ -149,7 +149,7 @@ Vue.component('abbreviation-autocomplete', {
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
-      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
+      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ element.d.substr( element.substrIndex , searchText.length) }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
     </li>
   </ul>
 </div>
