@@ -166,7 +166,6 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit for listeners attached on creation
     if(listeners){
-      console.log(listeners)
       if(listeners['update:search-text']) {
         this.onSearchTextChange = () => {
           if (this.recentlySelected) {
