@@ -105,7 +105,11 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   methods: {
-    onSearchTextChange: function() {
+    isOption: function (caseSensitive=true) {
+      return this.data.some(el => caseSensitive ? el.a == this.searchText : el.a.toLowerCase() === this.searchText.toLowerCase())
+    },
+
+    onSearchTextChange: function () {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
@@ -141,10 +145,6 @@ Vue.component('abbreviation-autocomplete', {
 
     setSelected (index) {
       this.selected = index
-    },
-
-    isOption: function(caseSensitive=true) {
-      return this.data.some(el => caseSensitive ? el.a == this.searchText : el.a.toLowerCase() === this.searchText.toLowerCase())
     }
   },
   template: `
@@ -165,7 +165,7 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit for listeners attached on creation
     if(listeners){
-      if(listeners['update:searchText']) {
+      if(listeners['update:search-text']) {
         this.onSearchTextChange = () => {
           if (this.recentlySelected) {
             this.recentlySelected = false
@@ -174,7 +174,7 @@ Vue.component('abbreviation-autocomplete', {
             this.selected = -1
           }
 
-          this.$emit('update:searchText', this.searchText)
+          this.$emit('update:search-text', this.searchText)
         }
       }
 
