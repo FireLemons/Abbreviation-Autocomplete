@@ -53,6 +53,7 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
 Vue.component('abbreviation-autocomplete', {
   data: function () {
     return {
+      mutableSearchText: this.searchText,
       focused: false,
       recentlySelected: false,
       selected: -1
@@ -79,12 +80,12 @@ Vue.component('abbreviation-autocomplete', {
   },
   computed: {
     searchList: function () {
-      if (this.searchText.length >= this.minSearchTextLength) {
+      if (this.mutableSearchText.length >= this.minSearchTextLength) {
         const countingSortData = []
         const relatedResults = []
 
         this.data.forEach((elem) => {
-          const index = elem.d.toLowerCase().indexOf(this.searchText.toLowerCase())
+          const index = elem.d.toLowerCase().indexOf(this.mutableSearchText.toLowerCase())
 
           // if search text is a substring of this definition
           if (index >= 0) {
@@ -100,13 +101,13 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
-    searchText: function () {
+    mutableSearchText: function () {
       this.onSearchTextChange()
     }
   },
   methods: {
     isOption: function (caseSensitive=true) {
-      return this.data.some(el => caseSensitive ? el.a == this.searchText : el.a.toLowerCase() === this.searchText.toLowerCase())
+      return this.data.some(el => caseSensitive ? el.a == this.mutableSearchText : el.a.toLowerCase() === this.mutableSearchText.toLowerCase())
     },
 
     onSearchTextChange: function () {
@@ -125,7 +126,7 @@ Vue.component('abbreviation-autocomplete', {
     select: function () {
       if (this.selected !== -1) {
         this.focused = false
-        this.searchText = this.searchList[this.selected].a
+        this.mutableSearchText = this.searchList[this.selected].a
         this.recentlySelected = true
       }
     },
@@ -149,11 +150,11 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" :placeholder="placeholder" v-model="mutableSearchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
-      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ element.d.substr( element.substrIndex , searchText.length) }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
+      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ element.d.substr( element.substrIndex , mutableSearchText.length) }}</span><span>{{ element.d.substr(element.substrIndex + mutableSearchText.length) }})</span>
     </li>
   </ul>
 </div>
@@ -165,6 +166,7 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit for listeners attached on creation
     if(listeners){
+      console.log(listeners)
       if(listeners['update:search-text']) {
         this.onSearchTextChange = () => {
           if (this.recentlySelected) {
@@ -174,7 +176,7 @@ Vue.component('abbreviation-autocomplete', {
             this.selected = -1
           }
 
-          this.$emit('update:search-text', this.searchText)
+          this.$emit('update:search-text', this.mutableSearchText)
         }
       }
 
@@ -185,7 +187,7 @@ Vue.component('abbreviation-autocomplete', {
             // Delete the key used for sorting autocomplete results before emitting
             delete this.searchList[this.selected].substrIndex
             this.$emit('select', this.searchList[this.selected])
-            this.searchText = this.searchList[this.selected].a
+            this.mutableSearchText = this.searchList[this.selected].a
             this.recentlySelected = true
           }
         }
