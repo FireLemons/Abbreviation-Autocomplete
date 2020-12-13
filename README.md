@@ -37,14 +37,9 @@ The minimum number of characters typed before autocomplete results are displayed
 Placeholder text for the search text input
 
 ## Events  
-##### @update:searchText
+##### @update:search-text
 Triggered whenever the search text changes
 Emits the text of the autocomplete search
-
-Supports two way binding  
-e.g.
-
-    v-bind:search-text.sync=""
 
 ##### @select
 Triggered after selecting an option in the dropdown  
