@@ -124,11 +124,17 @@ Vue.component('abbreviation-autocomplete', {
     },
 
     select: function () {
+      let selected
+
       if (this.selected !== -1) {
         this.focused = false
+        delete this.searchList[this.selected]['substrIndex']
+        selected = JSON.parse(JSON.stringify(this.searchList[this.selected]))
         this.mutableSearchText = this.searchList[this.selected].a
         this.recentlySelected = true
       }
+
+      return selected
     },
 
     selectDown: function () {
@@ -176,15 +182,9 @@ Vue.component('abbreviation-autocomplete', {
       }
 
       if(listeners.select) {
+        defaultSelect = this.select
         this.select = () => {
-          if (this.selected !== -1) {
-            this.focused = false
-            // Delete the key used for sorting autocomplete results before emitting
-            delete this.searchList[this.selected].substrIndex
-            this.$emit('select', this.searchList[this.selected])
-            this.mutableSearchText = this.searchList[this.selected].a
-            this.recentlySelected = true
-          }
+          this.$emit('select', defaultSelect())
         }
       }
     }
