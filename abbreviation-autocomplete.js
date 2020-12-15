@@ -179,7 +179,7 @@ Vue.component('abbreviation-autocomplete', {
         }
       }
 
-      if(listeners && listeners.select) {
+      if(listeners.select) {
         this.select = () => {
           if (this.selected !== -1) {
             this.focused = false
