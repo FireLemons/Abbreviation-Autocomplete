@@ -1,7 +1,7 @@
 # Abbreviation-Autocomplete
 A vue.js component that autocompletes abbreviations/acronyms by description rather than the abbreviation text.
 
-![autocomplete_screenshot](https://user-images.githubusercontent.com/8918762/72185093-e6280380-33e9-11ea-92ca-d0651b09771f.png)
+![autocomplete_screenshot](https://raw.githubusercontent.com/FireLemons/DocumentationMaterials/3adbd2389ba4b9750b4c2cf03a855c3ed31f3b80/img/screenshot.png)
 
 ## Props
 ##### data
@@ -37,14 +37,9 @@ The minimum number of characters typed before autocomplete results are displayed
 Placeholder text for the search text input
 
 ## Events  
-##### @update:searchText
+##### @update:search-text
 Triggered whenever the search text changes
 Emits the text of the autocomplete search
-
-Supports two way binding  
-e.g.
-
-    v-bind:search-text.sync=""
 
 ##### @select
 Triggered after selecting an option in the dropdown  
