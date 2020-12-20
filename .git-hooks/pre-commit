@@ -1,5 +1,12 @@
 #!/bin/bash
 
+MINIFY_COMMAND="minify"
+
+if ! command -v $MINIFY_COMMAND &> /dev/null;then
+    echo "command $MINIFY_COMMAND could not be found"
+    exit 1
+fi
+
 JSLastModified=$(date -r abbreviation-autocomplete.js +%s)
 minifiedJSLastModified=$(date -r abbreviation-autocomplete.min.js +%s)
 
