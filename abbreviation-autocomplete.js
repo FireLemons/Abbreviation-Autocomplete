@@ -53,8 +53,8 @@ function countingSortInsert (arr, arrReduced, elem, elemGroup) {
 Vue.component('abbreviation-autocomplete', {
   data: function () {
     return {
+      mutableSearchText: this.searchText,
       focused: false,
-      searchText: '',
       loading: false,
       recentlySelected: false,
       searchList: [],
@@ -82,18 +82,22 @@ Vue.component('abbreviation-autocomplete', {
     }
   },
   watch: {
-    searchText: function () {
+    mutableSearchText: function () {
       this.onSearchTextChange()
     }
   },
   methods: {
+    isOption: function (caseSensitive=true) {
+      return this.data.some(el => caseSensitive ? el.a == this.mutableSearchText : el.a.toLowerCase() === this.mutableSearchText.toLowerCase())
+    },
+
     loadRelatedItems: function () {
-      if (this.searchText.length >= this.minSearchTextLength) {
+      if (this.mutableSearchText.length >= this.minSearchTextLength) {
         const countingSortData = []
         const relatedResults = []
 
         this.data.forEach((elem) => {
-          const index = elem.d.toLowerCase().indexOf(this.searchText.toLowerCase())
+          const index = elem.d.toLowerCase().indexOf(this.mutableSearchText.toLowerCase())
 
           // if search text is a substring of this definition
           if (index >= 0) {
@@ -108,6 +112,7 @@ Vue.component('abbreviation-autocomplete', {
         return []
       }
     },
+
     onSearchTextChange: function () {
       if (this.recentlySelected) {
         this.recentlySelected = false
@@ -116,7 +121,7 @@ Vue.component('abbreviation-autocomplete', {
         this.selected = -1
       }
 
-      if (this.searchText.length >= this.minSearchTextLength) {
+      if (this.mutableSearchText.length >= this.minSearchTextLength) {
         this.loading = true
         this.searchList = this.loadRelatedItems()
       } else {
@@ -134,11 +139,17 @@ Vue.component('abbreviation-autocomplete', {
     },
 
     select: function () {
+      let selected
+
       if (this.selected !== -1) {
         this.focused = false
-        this.searchText = this.searchList[this.selected].a
+        delete this.searchList[this.selected]['substrIndex']
+        selected = JSON.parse(JSON.stringify(this.searchList[this.selected]))
+        this.mutableSearchText = this.searchList[this.selected].a
         this.recentlySelected = true
       }
+
+      return selected
     },
 
     selectDown: function () {
@@ -160,7 +171,7 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" :placeholder="placeholder" v-model="searchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <input type="text" :placeholder="placeholder" v-model="mutableSearchText" @focus="focused = true" @blur="onUnfocus" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
   <ul v-show="focused" @mousedown="select">
     <li v-show="loading">
       <svg height="10" width="10">
@@ -175,7 +186,7 @@ Vue.component('abbreviation-autocomplete', {
     </li>
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="setSelected(index)">
       <span>{{ element.a }}</span>
-      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ searchText }}</span><span>{{ element.d.substr(element.substrIndex + searchText.length) }})</span>
+      <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ element.d.substr( element.substrIndex , mutableSearchText.length) }}</span><span>{{ element.d.substr(element.substrIndex + mutableSearchText.length) }})</span>
     </li>
   </ul>
 </div>
@@ -191,37 +202,21 @@ Vue.component('abbreviation-autocomplete', {
 
     // Only emit if there's a listener attached on creation
     if (listeners) {
-      if (listeners['update:searchText']) {
+      if (listeners['update:search-text']) {
+        defaultOnSearchTextChange = this.onSearchTextChange
+
         this.onSearchTextChange = () => {
-          if (this.recentlySelected) {
-            this.recentlySelected = false
-          } else {
-            this.focused = true
-            this.selected = -1
-          }
+          defaultOnSearchTextChange()
 
-          if (this.searchText.length >= this.minSearchTextLength) {
-            this.loading = true
-            this.searchList = this.loadRelatedItems()
-          } else {
-            this.loading = false
-            this.searchList = []
-          }
-
-          this.$emit('update:searchText', this.searchText)
+          this.$emit('update:search-text', this.mutableSearchText)
         }
       }
 
       if (listeners.select) {
+        defaultSelect = this.select
+
         this.select = () => {
-          if (this.selected !== -1) {
-            this.focused = false
-            // clear key used for sorting autocomplete results
-            delete this.searchList[this.selected].substrIndex
-            this.$emit('select', this.searchList[this.selected])
-            this.searchText = this.searchList[this.selected].a
-            this.recentlySelected = true
-          }
+          this.$emit('select', defaultSelect())
         }
       }
     }
