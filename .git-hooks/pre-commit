@@ -23,10 +23,8 @@ done
 
 if [[ $JSChanged && ($JSLastModified -gt $minifiedJSLastModified || ! $minifiedJSChanged) ]];then
   echo "ERROR: staged minified version is not up to date"
-  if [[ $JSLastModified -gt $minifiedJSLastModified ]];then
-    echo "INFO: Auto minifying"
-    npx minify abbreviation-autocomplete.js > abbreviation-autocomplete.min.js
-  fi
+  echo "INFO: Auto minifying"
+  npx minify abbreviation-autocomplete.js > abbreviation-autocomplete.min.js
   echo "INFO: Please add abbreviation-autocomplete.min.js and recommit"
   exit 1
 elif [[ $JSChanged ]];then 
