@@ -54,7 +54,7 @@ Vue.component('abbreviation-autocomplete', {
   data: function () {
     return {
       mutableSearchText: this.searchText,
-      focused: false,
+      searchItemsVisible: false,
       recentlySelected: false,
       selected: -1
     }
@@ -110,7 +110,7 @@ Vue.component('abbreviation-autocomplete', {
       if (this.recentlySelected) {
         this.recentlySelected = false
       } else {
-        this.focused = true
+        this.searchItemsVisible = true
         this.selected = -1
       }
     },
@@ -119,7 +119,7 @@ Vue.component('abbreviation-autocomplete', {
       let selected
 
       if (this.selected !== -1) {
-        this.focused = false
+        this.searchItemsVisible = false
         delete this.searchList[this.selected]['substrIndex']
         selected = JSON.parse(JSON.stringify(this.searchList[this.selected]))
         this.mutableSearchText = this.searchList[this.selected].a
@@ -144,8 +144,8 @@ Vue.component('abbreviation-autocomplete', {
   },
   template: `
 <div class="abbreviation-autocomplete">
-  <input type="text" :placeholder="placeholder" v-model="mutableSearchText" @focus="focused = true" @blur="focused = false" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
-  <ul v-show="focused" @mousedown="select">
+  <input type="text" :placeholder="placeholder" v-model="mutableSearchText" @focus="searchItemsVisible = true" @blur="searchItemsVisible = false" @keyup.enter="select" @keydown.down="selectDown" @keydown.up="selectUp">
+  <ul v-show="searchItemsVisible" @mousedown="select">
     <li v-for="(element, index) in searchList" :class="{ selected: index === selected }" @mouseover="selected = index">
       <span>{{ element.a }}</span>
       <span> ({{ element.d.substr(0, element.substrIndex) }}</span><span class="highlight">{{ element.d.substr( element.substrIndex , mutableSearchText.length) }}</span><span>{{ element.d.substr(element.substrIndex + mutableSearchText.length) }})</span>
