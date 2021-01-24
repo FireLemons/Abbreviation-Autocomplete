@@ -46,14 +46,3 @@ Triggered after selecting an option in the dropdown
 Emits the object representing the option selected
 
 ### [Example](https://firelemons.github.io/AutocompleteExample/)
-
-## Debounce
-
-If the autocomplete data is large enough to cause noticably poor performance, lodash's `debounce` can delay fetching of autocomplete results until the user stops typing. 
-
-For the debounced version, checkout the `lodash` branch, load lodash.js and set the `debounce-wait` prop
-
-##### debounce-wait(Optional)
-The time in milliseconds since the last character typed until the user is considered to have finished typing
-
-### [Example with debounce](https://firelemons.github.io/AutocompleteDebounceExample/)
