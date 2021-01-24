@@ -2,6 +2,7 @@
 An autocomplete for abbreviations/acronyms searching by description rather than the abbreviation text.
 
 ![autocomplete_screenshot](https://raw.githubusercontent.com/FireLemons/DocumentationMaterials/3adbd2389ba4b9750b4c2cf03a855c3ed31f3b80/img/screenshot.png)
+### [Live Example](https://firelemons.github.io/AutocompleteExample/)
 
 ## Props
 ##### data
@@ -44,5 +45,3 @@ Emits the text of the autocomplete search
 ##### @select
 Triggered after selecting an option in the dropdown  
 Emits the object representing the option selected
-
-### [Example](https://firelemons.github.io/AutocompleteExample/)
