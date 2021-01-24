@@ -1,5 +1,5 @@
 # Abbreviation-Autocomplete
-A vue.js component that autocompletes abbreviations/acronyms by description rather than the abbreviation text.
+An autocomplete for abbreviations/acronyms searching by description rather than the abbreviation text.
 
 ![autocomplete_screenshot](https://raw.githubusercontent.com/FireLemons/DocumentationMaterials/3adbd2389ba4b9750b4c2cf03a855c3ed31f3b80/img/screenshot.png)
 
