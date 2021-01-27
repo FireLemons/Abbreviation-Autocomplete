@@ -19,12 +19,12 @@ e.g.
 
     [
       {
-        a: "ATL",
-        d: "Hartsfield–Jackson Atlanta International Airport"
+        a:"EG",
+        d:"Egypt"
       },
       {
-        a: "LAX",
-        d: "Los Angeles International Airport"
+        a:"SV",
+        d:"El Salvador"
       }
     ]
 
