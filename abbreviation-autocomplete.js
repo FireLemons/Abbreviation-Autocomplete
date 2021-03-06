@@ -112,21 +112,18 @@ Vue.component('abbreviation-autocomplete', {
       } else {
         this.searchItemsVisible = true
         this.selected = -1
+        this.$emit('update:search-text', this.mutableSearchText)
       }
     },
 
     select: function () {
-      let selected
-
       if (this.selected !== -1) {
         this.searchItemsVisible = false
         delete this.searchList[this.selected]['substrIndex']
-        selected = JSON.parse(JSON.stringify(this.searchList[this.selected]))
+        this.$emit('select', JSON.parse(JSON.stringify(this.searchList[this.selected])))
         this.mutableSearchText = this.searchList[this.selected].a
         this.recentlySelected = true
       }
-
-      return selected
     },
 
     selectDown: function () {
@@ -155,26 +152,5 @@ Vue.component('abbreviation-autocomplete', {
 `,
   created: function () {
     this.data.sort((a, b) => a.d.localeCompare(b.d))
-
-    let listeners = this.$listeners
-
-    // Only emit for listeners attached on creation
-    if(listeners){
-      if(listeners['update:search-text']) {
-        let defaultOnSearchTextChange = this.onSearchTextChange
-
-        this.onSearchTextChange = () => {
-          defaultOnSearchTextChange()
-          this.$emit('update:search-text', this.mutableSearchText)
-        }
-      }
-
-      if(listeners.select) {
-        defaultSelect = this.select
-        this.select = () => {
-          this.$emit('select', defaultSelect())
-        }
-      }
-    }
   }
 })
